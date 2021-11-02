@@ -3,9 +3,9 @@
 
 
 Network Working Group                                      M. Nottingham
-Internet-Draft                                           27 October 2021
+Internet-Draft                                           2 November 2021
 Intended status: Informational                                          
-Expires: 30 April 2022
+Expires: 6 May 2022
 
 
                     Avoiding Internet Centralization
@@ -13,10 +13,11 @@ Expires: 30 April 2022
 
 Abstract
 
-   Avoiding centralization is an important goal in the design of
-   Internet protocols.  This document discusses why it is necessary for
-   Internet protocols to consider centralization risks, how they can do
-   so, and the design implications of centralisation upon them.
+   Avoiding centralization is an important goal for Internet protocols.
+   This document discusses why it is necessary for Internet protocol
+   designers to consider centralization risks, identifies different
+   kinds of centralization, lists techniques used to manage
+   centralization, and recommends practices to avoid it.
 
 Note to Readers
 
@@ -50,7 +51,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 30 April 2022.
+   This Internet-Draft will expire on 6 May 2022.
 
 Copyright Notice
 
@@ -62,9 +63,9 @@ Copyright Notice
    license-info) in effect on the date of publication of this document.
    Please review these documents carefully, as they describe your rights
    and restrictions with respect to this document.  Code Components
-   extracted from this document must include Simplified BSD License text
-   as described in Section 4.e of the Trust Legal Provisions and are
-   provided without warranty as described in the Simplified BSD License.
+   extracted from this document must include Revised BSD License text as
+   described in Section 4.e of the Trust Legal Provisions and are
+   provided without warranty as described in the Revised BSD License.
 
 Table of Contents
 
@@ -95,14 +96,14 @@ Table of Contents
 
 1.  Introduction
 
-   One of the properties that has made the Internet successful is its
-   purposeful avoidance of any single controlling entity.  While
-   originally this approach may have been driven by a desire to prevent
-   a single technical failure from having wide impact, it has also
-   enabled the rapid adoption and broad spread of the Internet, because
-   internetworking does not require obtaining permission from or ceding
-   control to another entity -- thereby accommodating a spectrum of
-   political and social requirements.
+   One reason the Internet is successful is its purposeful avoidance of
+   any single controlling entity.  While originally this approach may
+   have been driven by a desire to prevent a single technical failure
+   from having wide impact, it has also enabled the rapid adoption and
+   broad spread of the Internet, because internetworking does not
+   require obtaining permission from or ceding control to another entity
+   -- thereby accommodating a spectrum of political and social
+   requirements.
 
    This means that protocols that are considered part of the Internet
    share a common design goal: avoiding centralization, which we define
@@ -136,10 +137,9 @@ Table of Contents
    Internet protocol design.  Section 2 explains why it is necessary for
    Internet protocols to avoid centralization when possible.  Section 3
    surveys the different kinds of centralization that Internet protocols
-   might be involved in, and make general recommendations about how they
-   should be handled.  Section 4 further explores specific techniques
-   that can be used to do so.  Finally, Section 5 discusses cross-
-   cutting interactions between centralization and protocol design.
+   might be involved in.  Section 4 explores techniques that can be used
+   to manage centralization.  Finally, Section 5 discusses cross-cutting
+   interactions between centralization and protocol design.
 
    The primary audience for this document is those involved in designing
    and standardising Internet protocols.  However, designers of
@@ -167,9 +167,9 @@ Table of Contents
    communication, thereby obtaining 'informational and positional
    advantages' [INTERMEDIARY-INFLUENCE].  That power can be used to
    observe behavior (the 'panopticon effect') and shape or even deny
-   behaviour (the 'chokepoint effect').  Both effects can be used by
-   those actors or the states that they occupy for coercive ends
-   [WEAPONIZED-INTERDEPENDENCE].
+   behaviour (the 'chokepoint effect') -- which can be used those
+   parties (or the states that have authority over them) for coercive
+   ends [WEAPONIZED-INTERDEPENDENCE].
 
    As a 'large, heterogeneous collection of interconnected systems'
    [BCP95] the Internet is often characterised as a 'network of
@@ -534,11 +534,11 @@ Table of Contents
    [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
               Requirement Levels", BCP 14, RFC 2119,
               DOI 10.17487/RFC2119, March 1997,
-              <https://datatracker.ietf.org/doc/html/rfc2119>.
+              <https://www.rfc-editor.org/rfc/rfc2119>.
 
    [RFC8174]  Leiba, B., "Ambiguity of Uppercase vs Lowercase in RFC
               2119 Key Words", BCP 14, RFC 8174, DOI 10.17487/RFC8174,
-              May 2017, <https://datatracker.ietf.org/doc/html/rfc8174>.
+              May 2017, <https://www.rfc-editor.org/rfc/rfc8174>.
 
 7.2.  Informative References
 
@@ -564,35 +564,32 @@ Table of Contents
 
    [RFC1035]  Mockapetris, P., "Domain names - implementation and
               specification", STD 13, RFC 1035, DOI 10.17487/RFC1035,
-              November 1987,
-              <https://datatracker.ietf.org/doc/html/rfc1035>.
+              November 1987, <https://www.rfc-editor.org/rfc/rfc1035>.
 
    [RFC4271]  Rekhter, Y., Ed., Li, T., Ed., and S. Hares, Ed., "A
               Border Gateway Protocol 4 (BGP-4)", RFC 4271,
               DOI 10.17487/RFC4271, January 2006,
-              <https://datatracker.ietf.org/doc/html/rfc4271>.
+              <https://www.rfc-editor.org/rfc/rfc4271>.
 
    [RFC4287]  Nottingham, M., Ed. and R. Sayre, Ed., "The Atom
               Syndication Format", RFC 4287, DOI 10.17487/RFC4287,
-              December 2005,
-              <https://datatracker.ietf.org/doc/html/rfc4287>.
+              December 2005, <https://www.rfc-editor.org/rfc/rfc4287>.
 
    [RFC5321]  Klensin, J., "Simple Mail Transfer Protocol", RFC 5321,
               DOI 10.17487/RFC5321, October 2008,
-              <https://datatracker.ietf.org/doc/html/rfc5321>.
+              <https://www.rfc-editor.org/rfc/rfc5321>.
 
    [RFC6120]  Saint-Andre, P., "Extensible Messaging and Presence
               Protocol (XMPP): Core", RFC 6120, DOI 10.17487/RFC6120,
-              March 2011,
-              <https://datatracker.ietf.org/doc/html/rfc6120>.
+              March 2011, <https://www.rfc-editor.org/rfc/rfc6120>.
 
    [RFC8484]  Hoffman, P. and P. McManus, "DNS Queries over HTTPS
               (DoH)", RFC 8484, DOI 10.17487/RFC8484, October 2018,
-              <https://datatracker.ietf.org/doc/html/rfc8484>.
+              <https://www.rfc-editor.org/rfc/rfc8484>.
 
    [RFC8890]  Nottingham, M., "The Internet is for End Users", RFC 8890,
               DOI 10.17487/RFC8890, August 2020,
-              <https://datatracker.ietf.org/doc/html/rfc8890>.
+              <https://www.rfc-editor.org/rfc/rfc8890>.
 
    [SCALE-FREE]
               Albert, R., "Emergence of Scaling in Random Networks",

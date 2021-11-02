@@ -7,13 +7,13 @@
 <title>Avoiding Internet Centralization</title>
 <meta content="Mark Nottingham" name="author">
 <meta content="
-       Avoiding centralization is an important goal in the design of Internet protocols. This document discusses why it is necessary for Internet protocols to consider centralization risks, how they can do so, and the design implications of centralisation upon them. 
+       Avoiding centralization is an important goal for Internet protocols. This document discusses why it is necessary for Internet protocol designers to consider centralization risks, identifies different kinds of centralization, lists techniques used to manage centralization, and recommends practices to avoid it. 
     " name="description">
-<meta content="xml2rfc 3.10.0" name="generator">
+<meta content="xml2rfc 3.11.1" name="generator">
 <meta content="Internet-Draft" name="keyword">
 <meta content="draft-nottingham-avoiding-internet-centralization-latest" name="ietf.draft">
 <!-- Generator version information:
-  xml2rfc 3.10.0
+  xml2rfc 3.11.1
     Python 3.9.5
     appdirs 1.4.4
     ConfigArgParse 1.3
@@ -1040,11 +1040,11 @@ svg [stroke="fill"], svg [fill^="#fff"] {
 <thead><tr>
 <td class="left">Internet-Draft</td>
 <td class="center">Avoiding Internet Centralization</td>
-<td class="right">October 2021</td>
+<td class="right">November 2021</td>
 </tr></thead>
 <tfoot><tr>
 <td class="left">Nottingham</td>
-<td class="center">Expires 30 April 2022</td>
+<td class="center">Expires 6 May 2022</td>
 <td class="right">[Page]</td>
 </tr></tfoot>
 </table>
@@ -1057,12 +1057,12 @@ svg [stroke="fill"], svg [fill^="#fff"] {
 <dd class="internet-draft">draft-nottingham-avoiding-internet-centralization-latest</dd>
 <dt class="label-published">Published:</dt>
 <dd class="published">
-<time datetime="2021-10-27" class="published">27 October 2021</time>
+<time datetime="2021-11-02" class="published">2 November 2021</time>
     </dd>
 <dt class="label-intended-status">Intended Status:</dt>
 <dd class="intended-status">Informational</dd>
 <dt class="label-expires">Expires:</dt>
-<dd class="expires"><time datetime="2022-04-30">30 April 2022</time></dd>
+<dd class="expires"><time datetime="2022-05-06">6 May 2022</time></dd>
 <dt class="label-authors">Author:</dt>
 <dd class="authors">
 <div class="author">
@@ -1074,7 +1074,7 @@ svg [stroke="fill"], svg [fill^="#fff"] {
 <h1 id="title">Avoiding Internet Centralization</h1>
 <section id="section-abstract">
       <h2 id="abstract"><a href="#abstract" class="selfRef">Abstract</a></h2>
-<p id="section-abstract-1">Avoiding centralization is an important goal in the design of Internet protocols. This document discusses why it is necessary for Internet protocols to consider centralization risks, how they can do so, and the design implications of centralisation upon them.<a href="#section-abstract-1" class="pilcrow">¶</a></p>
+<p id="section-abstract-1">Avoiding centralization is an important goal for Internet protocols. This document discusses why it is necessary for Internet protocol designers to consider centralization risks, identifies different kinds of centralization, lists techniques used to manage centralization, and recommends practices to avoid it.<a href="#section-abstract-1" class="pilcrow">¶</a></p>
 </section>
 <section class="note" id="section-note.1">
       <h2 id="name-note-to-readers">
@@ -1105,7 +1105,7 @@ svg [stroke="fill"], svg [fill^="#fff"] {
         time. It is inappropriate to use Internet-Drafts as reference
         material or to cite them other than as "work in progress."<a href="#section-boilerplate.1-3" class="pilcrow">¶</a></p>
 <p id="section-boilerplate.1-4">
-        This Internet-Draft will expire on 30 April 2022.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
+        This Internet-Draft will expire on 6 May 2022.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="copyright">
@@ -1123,9 +1123,9 @@ svg [stroke="fill"], svg [fill^="#fff"] {
             publication of this document. Please review these documents
             carefully, as they describe your rights and restrictions with
             respect to this document. Code Components extracted from this
-            document must include Simplified BSD License text as described in
+            document must include Revised BSD License text as described in
             Section 4.e of the Trust Legal Provisions and are provided without
-            warranty as described in the Simplified BSD License.<a href="#section-boilerplate.2-2" class="pilcrow">¶</a></p>
+            warranty as described in the Revised BSD License.<a href="#section-boilerplate.2-2" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="toc">
@@ -1225,12 +1225,12 @@ svg [stroke="fill"], svg [fill^="#fff"] {
       <h2 id="name-introduction">
 <a href="#section-1" class="section-number selfRef">1. </a><a href="#name-introduction" class="section-name selfRef">Introduction</a>
       </h2>
-<p id="section-1-1">One of the properties that has made the Internet successful is its purposeful avoidance of any single controlling entity. While originally this approach may have been driven by a desire to prevent a single technical failure from having wide impact, it has also enabled the rapid adoption and broad spread of the Internet, because internetworking does not require obtaining permission from or ceding control to another entity -- thereby accommodating a spectrum of political and social requirements.<a href="#section-1-1" class="pilcrow">¶</a></p>
+<p id="section-1-1">One reason the Internet is successful is its purposeful avoidance of any single controlling entity. While originally this approach may have been driven by a desire to prevent a single technical failure from having wide impact, it has also enabled the rapid adoption and broad spread of the Internet, because internetworking does not require obtaining permission from or ceding control to another entity -- thereby accommodating a spectrum of political and social requirements.<a href="#section-1-1" class="pilcrow">¶</a></p>
 <p id="section-1-2">This means that protocols that are considered part of the Internet share a common design goal: avoiding centralization, which we define as the ability of a single person, company, or government -- or a small group of them -- to observe, control, or extract rent from the protocol's operation or use.<a href="#section-1-2" class="pilcrow">¶</a></p>
 <p id="section-1-3">At the same time, the utility of many Internet protocols is enabled or significantly enhanced by ceding some aspect of communication to another party -- often, in a manner that has centralization risk. For example, there might be a need for a 'single source of truth' or a rendezvous facility to allow endpoints to find each other. How should such protocols be designed?<a href="#section-1-3" class="pilcrow">¶</a></p>
 <p id="section-1-4">Furthermore, many successful proprietary protocols and applications on the Internet are de facto centralized. Some have become so well-known that they are commonly mistaken for the Internet itself. In other cases, Internet protocols seem to favour centralized deployments due to economic and social factors. Should standards efforts attempt to mitigate centralization in these cases, and if so, how?<a href="#section-1-4" class="pilcrow">¶</a></p>
 <p id="section-1-5">Finally, some autonomous networks have requirements to control the operation of Internet protocols internally, and some users or groups of users might cede control of some aspect of how they use the Internet to a central authority, either voluntarily or under legal compulsion. In both of these cases, should Internet protocols accommodate such requirements, and if so, how?<a href="#section-1-5" class="pilcrow">¶</a></p>
-<p id="section-1-6">This document discusses aspects of centralization with regard to Internet protocol design. <a href="#why" class="xref">Section 2</a> explains why it is necessary for Internet protocols to avoid centralization when possible. <a href="#kinds" class="xref">Section 3</a> surveys the different kinds of centralization that Internet protocols might be involved in, and make general recommendations about how they should be handled. <a href="#how" class="xref">Section 4</a> further explores specific techniques that can be used to do so. Finally, <a href="#considerations" class="xref">Section 5</a> discusses cross-cutting interactions between centralization and protocol design.<a href="#section-1-6" class="pilcrow">¶</a></p>
+<p id="section-1-6">This document discusses aspects of centralization with regard to Internet protocol design. <a href="#why" class="xref">Section 2</a> explains why it is necessary for Internet protocols to avoid centralization when possible. <a href="#kinds" class="xref">Section 3</a> surveys the different kinds of centralization that Internet protocols might be involved in. <a href="#how" class="xref">Section 4</a> explores techniques that can be used to manage centralization. Finally, <a href="#considerations" class="xref">Section 5</a> discusses cross-cutting interactions between centralization and protocol design.<a href="#section-1-6" class="pilcrow">¶</a></p>
 <p id="section-1-7">The primary audience for this document is those involved in designing and standardising Internet protocols. However, designers of proprietary protocols can benefit from considering aspects of centralisation, especially if they intend their protocol to be considered for standardisation. Likewise, policymakers can use this document to help identify centralised protocols and applications, as they might attract different kinds of regulation.<a href="#section-1-7" class="pilcrow">¶</a></p>
 <div id="notational-conventions">
 <section id="section-1.1">
@@ -1250,7 +1250,7 @@ shown here.<a href="#section-1.1-1" class="pilcrow">¶</a></p>
       <h2 id="name-why-avoid-centralization">
 <a href="#section-2" class="section-number selfRef">2. </a><a href="#name-why-avoid-centralization" class="section-name selfRef">Why Avoid Centralization</a>
       </h2>
-<p id="section-2-1">While in theory every node on the Internet is equal, in practice some nodes are much more connected than others: for example, just a few sites drive much of the traffic on the Web. While expected and observed in many kinds of networks <span>[<a href="#SCALE-FREE" class="xref">SCALE-FREE</a>]</span>, these network effects award asymmetric power to nodes that act as intermediaries to communication, thereby obtaining 'informational and positional advantages' <span>[<a href="#INTERMEDIARY-INFLUENCE" class="xref">INTERMEDIARY-INFLUENCE</a>]</span>. That power can be used to observe behavior (the 'panopticon effect') and shape or even deny behaviour (the 'chokepoint effect'). Both effects can be used by those actors or the states that they occupy for coercive ends <span>[<a href="#WEAPONIZED-INTERDEPENDENCE" class="xref">WEAPONIZED-INTERDEPENDENCE</a>]</span>.<a href="#section-2-1" class="pilcrow">¶</a></p>
+<p id="section-2-1">While in theory every node on the Internet is equal, in practice some nodes are much more connected than others: for example, just a few sites drive much of the traffic on the Web. While expected and observed in many kinds of networks <span>[<a href="#SCALE-FREE" class="xref">SCALE-FREE</a>]</span>, these network effects award asymmetric power to nodes that act as intermediaries to communication, thereby obtaining 'informational and positional advantages' <span>[<a href="#INTERMEDIARY-INFLUENCE" class="xref">INTERMEDIARY-INFLUENCE</a>]</span>. That power can be used to observe behavior (the 'panopticon effect') and shape or even deny behaviour (the 'chokepoint effect') -- which can be used those parties (or the states that have authority over them) for coercive ends <span>[<a href="#WEAPONIZED-INTERDEPENDENCE" class="xref">WEAPONIZED-INTERDEPENDENCE</a>]</span>.<a href="#section-2-1" class="pilcrow">¶</a></p>
 <p id="section-2-2">As a 'large, heterogeneous collection of interconnected systems' <span>[<a href="#BCP95" class="xref">BCP95</a>]</span> the Internet is often characterised as a 'network of networks'. Protocols that are to considered a part of the Internet need to be suitable for deployment in this model -- where networks are peers who agree to facilitate communication, rather than subservient to each others' requirements or subject to coercion by them.<a href="#section-2-2" class="pilcrow">¶</a></p>
 <p id="section-2-3">When applications and services are available from many different providers, the Internet and its users benefit from the resulting competition -- especially when those users can build their own applications and services based upon interoperable standards. When a broad set of users become dependent upon a centralised protocol, the central authority effective becomes an essential facility, which encourages abuse of that power.<a href="#section-2-3" class="pilcrow">¶</a></p>
 <p id="section-2-4">Centralized protocols can also preclude the possibility of 'permissionless innovation' -- the ability to deploy new, unforeseen applications without requiring coordination with parties other than those you are communicating with.<a href="#section-2-4" class="pilcrow">¶</a></p>
@@ -1441,11 +1441,11 @@ style of deployment.<a href="#section-4.2-4" class="pilcrow">¶</a></p>
 <dl class="references">
 <dt id="RFC2119">[RFC2119]</dt>
         <dd>
-<span class="refAuthor">Bradner, S.</span>, <span class="refTitle">"Key words for use in RFCs to Indicate Requirement Levels"</span>, <span class="seriesInfo">BCP 14</span>, <span class="seriesInfo">RFC 2119</span>, <span class="seriesInfo">DOI 10.17487/RFC2119</span>, <time datetime="1997-03" class="refDate">March 1997</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/rfc2119">https://datatracker.ietf.org/doc/html/rfc2119</a>&gt;</span>. </dd>
+<span class="refAuthor">Bradner, S.</span>, <span class="refTitle">"Key words for use in RFCs to Indicate Requirement Levels"</span>, <span class="seriesInfo">BCP 14</span>, <span class="seriesInfo">RFC 2119</span>, <span class="seriesInfo">DOI 10.17487/RFC2119</span>, <time datetime="1997-03" class="refDate">March 1997</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc2119">https://www.rfc-editor.org/rfc/rfc2119</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="RFC8174">[RFC8174]</dt>
       <dd>
-<span class="refAuthor">Leiba, B.</span>, <span class="refTitle">"Ambiguity of Uppercase vs Lowercase in RFC 2119 Key Words"</span>, <span class="seriesInfo">BCP 14</span>, <span class="seriesInfo">RFC 8174</span>, <span class="seriesInfo">DOI 10.17487/RFC8174</span>, <time datetime="2017-05" class="refDate">May 2017</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/rfc8174">https://datatracker.ietf.org/doc/html/rfc8174</a>&gt;</span>. </dd>
+<span class="refAuthor">Leiba, B.</span>, <span class="refTitle">"Ambiguity of Uppercase vs Lowercase in RFC 2119 Key Words"</span>, <span class="seriesInfo">BCP 14</span>, <span class="seriesInfo">RFC 8174</span>, <span class="seriesInfo">DOI 10.17487/RFC8174</span>, <time datetime="2017-05" class="refDate">May 2017</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc8174">https://www.rfc-editor.org/rfc/rfc8174</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 </dl>
 </section>
@@ -1474,31 +1474,31 @@ style of deployment.<a href="#section-4.2-4" class="pilcrow">¶</a></p>
 <dd class="break"></dd>
 <dt id="RFC1035">[RFC1035]</dt>
         <dd>
-<span class="refAuthor">Mockapetris, P.</span>, <span class="refTitle">"Domain names - implementation and specification"</span>, <span class="seriesInfo">STD 13</span>, <span class="seriesInfo">RFC 1035</span>, <span class="seriesInfo">DOI 10.17487/RFC1035</span>, <time datetime="1987-11" class="refDate">November 1987</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/rfc1035">https://datatracker.ietf.org/doc/html/rfc1035</a>&gt;</span>. </dd>
+<span class="refAuthor">Mockapetris, P.</span>, <span class="refTitle">"Domain names - implementation and specification"</span>, <span class="seriesInfo">STD 13</span>, <span class="seriesInfo">RFC 1035</span>, <span class="seriesInfo">DOI 10.17487/RFC1035</span>, <time datetime="1987-11" class="refDate">November 1987</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc1035">https://www.rfc-editor.org/rfc/rfc1035</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="RFC4271">[RFC4271]</dt>
         <dd>
-<span class="refAuthor">Rekhter, Y., Ed.</span>, <span class="refAuthor">Li, T., Ed.</span>, and <span class="refAuthor">S. Hares, Ed.</span>, <span class="refTitle">"A Border Gateway Protocol 4 (BGP-4)"</span>, <span class="seriesInfo">RFC 4271</span>, <span class="seriesInfo">DOI 10.17487/RFC4271</span>, <time datetime="2006-01" class="refDate">January 2006</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/rfc4271">https://datatracker.ietf.org/doc/html/rfc4271</a>&gt;</span>. </dd>
+<span class="refAuthor">Rekhter, Y., Ed.</span>, <span class="refAuthor">Li, T., Ed.</span>, and <span class="refAuthor">S. Hares, Ed.</span>, <span class="refTitle">"A Border Gateway Protocol 4 (BGP-4)"</span>, <span class="seriesInfo">RFC 4271</span>, <span class="seriesInfo">DOI 10.17487/RFC4271</span>, <time datetime="2006-01" class="refDate">January 2006</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc4271">https://www.rfc-editor.org/rfc/rfc4271</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="RFC4287">[RFC4287]</dt>
         <dd>
-<span class="refAuthor">Nottingham, M., Ed.</span> and <span class="refAuthor">R. Sayre, Ed.</span>, <span class="refTitle">"The Atom Syndication Format"</span>, <span class="seriesInfo">RFC 4287</span>, <span class="seriesInfo">DOI 10.17487/RFC4287</span>, <time datetime="2005-12" class="refDate">December 2005</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/rfc4287">https://datatracker.ietf.org/doc/html/rfc4287</a>&gt;</span>. </dd>
+<span class="refAuthor">Nottingham, M., Ed.</span> and <span class="refAuthor">R. Sayre, Ed.</span>, <span class="refTitle">"The Atom Syndication Format"</span>, <span class="seriesInfo">RFC 4287</span>, <span class="seriesInfo">DOI 10.17487/RFC4287</span>, <time datetime="2005-12" class="refDate">December 2005</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc4287">https://www.rfc-editor.org/rfc/rfc4287</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="RFC5321">[RFC5321]</dt>
         <dd>
-<span class="refAuthor">Klensin, J.</span>, <span class="refTitle">"Simple Mail Transfer Protocol"</span>, <span class="seriesInfo">RFC 5321</span>, <span class="seriesInfo">DOI 10.17487/RFC5321</span>, <time datetime="2008-10" class="refDate">October 2008</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/rfc5321">https://datatracker.ietf.org/doc/html/rfc5321</a>&gt;</span>. </dd>
+<span class="refAuthor">Klensin, J.</span>, <span class="refTitle">"Simple Mail Transfer Protocol"</span>, <span class="seriesInfo">RFC 5321</span>, <span class="seriesInfo">DOI 10.17487/RFC5321</span>, <time datetime="2008-10" class="refDate">October 2008</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc5321">https://www.rfc-editor.org/rfc/rfc5321</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="RFC6120">[RFC6120]</dt>
         <dd>
-<span class="refAuthor">Saint-Andre, P.</span>, <span class="refTitle">"Extensible Messaging and Presence Protocol (XMPP): Core"</span>, <span class="seriesInfo">RFC 6120</span>, <span class="seriesInfo">DOI 10.17487/RFC6120</span>, <time datetime="2011-03" class="refDate">March 2011</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/rfc6120">https://datatracker.ietf.org/doc/html/rfc6120</a>&gt;</span>. </dd>
+<span class="refAuthor">Saint-Andre, P.</span>, <span class="refTitle">"Extensible Messaging and Presence Protocol (XMPP): Core"</span>, <span class="seriesInfo">RFC 6120</span>, <span class="seriesInfo">DOI 10.17487/RFC6120</span>, <time datetime="2011-03" class="refDate">March 2011</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc6120">https://www.rfc-editor.org/rfc/rfc6120</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="RFC8484">[RFC8484]</dt>
         <dd>
-<span class="refAuthor">Hoffman, P.</span> and <span class="refAuthor">P. McManus</span>, <span class="refTitle">"DNS Queries over HTTPS (DoH)"</span>, <span class="seriesInfo">RFC 8484</span>, <span class="seriesInfo">DOI 10.17487/RFC8484</span>, <time datetime="2018-10" class="refDate">October 2018</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/rfc8484">https://datatracker.ietf.org/doc/html/rfc8484</a>&gt;</span>. </dd>
+<span class="refAuthor">Hoffman, P.</span> and <span class="refAuthor">P. McManus</span>, <span class="refTitle">"DNS Queries over HTTPS (DoH)"</span>, <span class="seriesInfo">RFC 8484</span>, <span class="seriesInfo">DOI 10.17487/RFC8484</span>, <time datetime="2018-10" class="refDate">October 2018</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc8484">https://www.rfc-editor.org/rfc/rfc8484</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="RFC8890">[RFC8890]</dt>
         <dd>
-<span class="refAuthor">Nottingham, M.</span>, <span class="refTitle">"The Internet is for End Users"</span>, <span class="seriesInfo">RFC 8890</span>, <span class="seriesInfo">DOI 10.17487/RFC8890</span>, <time datetime="2020-08" class="refDate">August 2020</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/rfc8890">https://datatracker.ietf.org/doc/html/rfc8890</a>&gt;</span>. </dd>
+<span class="refAuthor">Nottingham, M.</span>, <span class="refTitle">"The Internet is for End Users"</span>, <span class="seriesInfo">RFC 8890</span>, <span class="seriesInfo">DOI 10.17487/RFC8890</span>, <time datetime="2020-08" class="refDate">August 2020</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc8890">https://www.rfc-editor.org/rfc/rfc8890</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="SCALE-FREE">[SCALE-FREE]</dt>
         <dd>
