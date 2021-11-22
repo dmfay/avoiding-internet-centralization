@@ -74,7 +74,7 @@ Table of Contents
      4.2.  Multi-Stakeholder Administration is Hard
      4.3.  Blockchains Are Not Magical
    5.  Guidelines for Protocol Designers
-     5.1.  Use Intermediation Sparingly
+     5.1.  Allow Intermediation Sparingly
      5.2.  Encrypt, Always
      5.3.  Reuse Existing Tools
      5.4.  Protocol Evolution Can Be a Centralization Risk
@@ -341,10 +341,9 @@ Table of Contents
 
    A widely known technique for avoiding centralization in Internet
    protocols is federation - that is, designing them in such a way that
-   new instances of any centralized function are relatively easy to
-   create while maintaining interoperability and connectivity with other
-   instances, so that communication between two endpoints might traverse
-   one or more intermediate servers.
+   new instances of any intermediary or otherwise centralized function
+   are relatively easy to create, and they are able to maintain
+   interoperability and connectivity with other instances.
 
    The most prevalent (and successful) example of a federated Internet
    protocol is SMTP [RFC5321], as part of the e-mail suite of protocols.
@@ -375,7 +374,7 @@ Table of Contents
    using service B), many of the largest do not.  Because federation is
    voluntary, some operators made a decision to attempt to capture their
    users into a single service, rather than provide the benefits of
-   global interoperability (see Section 3.5).
+   global interoperability.
 
    The examples above show that federation can be a useful technique to
    avoid direct centralization, but on its own is not sufficient to
@@ -389,19 +388,19 @@ Table of Contents
 
 4.2.  Multi-Stakeholder Administration is Hard
 
-   Delegating the administraiton of a centralized function to a multi-
-   stakeholder body is an onerous but sometimes necessary way to
-   mitigate any resulting centralization.
+   Delegating the administration of a necessarily centralized function
+   (see Section 3.2) to a multi-stakeholder body is an onerous but
+   sometimes necessary way to mitigate any resulting centralization.
 
    A multi-stakeholder body is an institution that includes
-   representatives of different kinds of parties that are affected by
-   the system's operation ('stakeholders') in an attempt to make well-
-   reasoned, broadly agreed-to, and authoritative decisions.
+   representatives of the different kinds of parties that are affected
+   by the system's operation ('stakeholders') in an attempt to make
+   well-reasoned, broadly agreed-to, and authoritative decisions.
 
    The most relevant example of this technique is the administration of
    the Domain Name System [RFC1035], which as a 'single source of truth'
    requires centralization of the naming function.  To mitigate
-   centralization, the function is carried out by multiple root servers
+   centralization, this task is carried out by multiple root servers
    that are administered by separate operators -- themselves diverse in
    geography and a selection of corporate entities, non-profits and
    government bodies from many jurisdictions and affiliations.
@@ -423,14 +422,14 @@ Table of Contents
    implemented by Web browsers as relying parties and Certificate
    Authorities as trust anchors.  To assure that all parties meet the
    operational and security requirements necessary to provide the
-   desired properties, the CAB Forum was established as an oversight
-   body that involves both of those parties as stakeholders.
+   desired properties, the CA/Browser Forum was established as an
+   oversight body that involves both of those parties as stakeholders.
 
    In each of these examples, setup and ongoing operation of a multi-
    stakeholder organization is not trivial.  This is the major downside
    of such an approach.  Additionally, the legitimacy of such an
    organization cannot be assumed, and may be difficult to establish and
-   maintain (see [LEGITIMACY-MULTI]).  This concern is especially
+   maintain (see, eg, [LEGITIMACY-MULTI]).  This concern is especially
    relevant if the function being coordinated is broad, complex, and/or
    contentious.
 
@@ -449,7 +448,7 @@ Table of Contents
    can be a starting point for avoiding or mitigating centralization in
    Internet protocols.
 
-5.1.  Use Intermediation Sparingly
+5.1.  Allow Intermediation Sparingly
 
    The introduction of an intermediary role -- i.e., a party that is
    required for communication to take place between endpoints -- adds
