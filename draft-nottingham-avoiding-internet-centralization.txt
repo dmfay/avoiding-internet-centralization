@@ -73,6 +73,10 @@ Table of Contents
      4.1.  Federation isn't Enough
      4.2.  Multi-Stakeholder Administration is Hard
      4.3.  Blockchains Are Not Magical
+       4.3.1.  Privacy
+       4.3.2.  Efficiency
+       4.3.3.  Performance
+       4.3.4.  Responsibility
    5.  Guidelines for Protocol Designers
      5.1.  Allow Intermediation Sparingly
      5.2.  Encrypt, Always
@@ -411,7 +415,7 @@ Table of Contents
    Another example of multi-stakeholderism is the standardization of
    Internet protocols themselves.  Because a specification effectively
    controls the behavior of implementations that are conformant with it,
-   the standarization process can be seen as a single point of control.
+   the standardization process can be seen as a single point of control.
    As a result, Internet standards bodies like the IETF allow open
    participation and contribution, make decisions in an open and
    accountable way, have a well-defined process for making (and when
@@ -436,11 +440,34 @@ Table of Contents
 4.3.  Blockchains Are Not Magical
 
    Increasingly, distributed consensus technologies such as the
-   blockchain are touted as a solution to centralization issues.
+   blockchain are touted as a solution to centralization issues.  A
+   complete survey of this rapidly-changing area is beyond the scope of
+   this document, but at a high level, we can generalise about their
+   properties.
 
-   XXX
+   These techniques avoid centralization risk by distributing
+   intermediary functions to members of a large pool of protocol
+   participants.  Verification of proper performance is typically
+   guaranteed through a combination of cryptographic techniques and
+   duplication of effort to check results.
 
-   Responsbility Privacy Performance Sustainability
+   As such, they avoid direct centralization, and are robust against
+   inherited centralization.  Depending upon the application in
+   question, indirect and platform centralization may still be possible,
+   but in general these techniques do not lend themselves to these ends
+   as readily as federated systems do.
+
+   However, distributed consensus technologies have a number of
+   potential shortcomings that may make them inappropriate -- or at
+   least difficult to use for many Internet applications.
+
+4.3.1.  Privacy
+
+4.3.2.  Efficiency
+
+4.3.3.  Performance
+
+4.3.4.  Responsibility
 
 5.  Guidelines for Protocol Designers
 

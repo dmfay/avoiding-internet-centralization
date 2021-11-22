@@ -1174,6 +1174,20 @@ svg [stroke="fill"], svg [fill^="#fff"] {
 </li>
               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.3">
                 <p id="section-toc.1-1.4.2.3.1"><a href="#section-4.3" class="xref">4.3</a>.  <a href="#name-blockchains-are-not-magical" class="xref">Blockchains Are Not Magical</a></p>
+<ul class="compact toc ulBare ulEmpty">
+<li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.3.2.1">
+                    <p id="section-toc.1-1.4.2.3.2.1.1"><a href="#section-4.3.1" class="xref">4.3.1</a>.  <a href="#name-privacy" class="xref">Privacy</a></p>
+</li>
+                  <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.3.2.2">
+                    <p id="section-toc.1-1.4.2.3.2.2.1"><a href="#section-4.3.2" class="xref">4.3.2</a>.  <a href="#name-efficiency" class="xref">Efficiency</a></p>
+</li>
+                  <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.3.2.3">
+                    <p id="section-toc.1-1.4.2.3.2.3.1"><a href="#section-4.3.3" class="xref">4.3.3</a>.  <a href="#name-performance" class="xref">Performance</a></p>
+</li>
+                  <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.3.2.4">
+                    <p id="section-toc.1-1.4.2.3.2.4.1"><a href="#section-4.3.4" class="xref">4.3.4</a>.  <a href="#name-responsibility" class="xref">Responsibility</a></p>
+</li>
+                </ul>
 </li>
             </ul>
 </li>
@@ -1372,7 +1386,7 @@ shown here.<a href="#section-1.1-1" class="pilcrow">¶</a></p>
 <p id="section-4.2-1">Delegating the administration of a necessarily centralized function (see <a href="#necessary" class="xref">Section 3.2</a>) to a multi-stakeholder body is an onerous but sometimes necessary way to mitigate any resulting centralization.<a href="#section-4.2-1" class="pilcrow">¶</a></p>
 <p id="section-4.2-2">A multi-stakeholder body is an institution that includes representatives of the different kinds of parties that are affected by the system's operation ('stakeholders') in an attempt to make well-reasoned, broadly agreed-to, and authoritative decisions.<a href="#section-4.2-2" class="pilcrow">¶</a></p>
 <p id="section-4.2-3">The most relevant example of this technique is the administration of the Domain Name System <span>[<a href="#RFC1035" class="xref">RFC1035</a>]</span>, which as a 'single source of truth' requires centralization of the naming function. To mitigate centralization, this task is carried out by multiple root servers that are administered by separate operators -- themselves diverse in geography and a selection of corporate entities, non-profits and government bodies from many jurisdictions and affiliations. Furthermore, those operators are regulated by ICANN, which is defined as a globally multi-stakeholder body with representation from a end users, governments, operators, and others.<a href="#section-4.2-3" class="pilcrow">¶</a></p>
-<p id="section-4.2-4">Another example of multi-stakeholderism is the standardization of Internet protocols themselves. Because a specification effectively controls the behavior of implementations that are conformant with it, the standarization process can be seen as a single point of control. As a result, Internet standards bodies like the IETF allow open participation and contribution, make decisions in an open and accountable way, have a well-defined process for making (and when necessary, appealing) decisions, and take into account the views of different stakeholder groups <span>[<a href="#RFC8890" class="xref">RFC8890</a>]</span>.<a href="#section-4.2-4" class="pilcrow">¶</a></p>
+<p id="section-4.2-4">Another example of multi-stakeholderism is the standardization of Internet protocols themselves. Because a specification effectively controls the behavior of implementations that are conformant with it, the standardization process can be seen as a single point of control. As a result, Internet standards bodies like the IETF allow open participation and contribution, make decisions in an open and accountable way, have a well-defined process for making (and when necessary, appealing) decisions, and take into account the views of different stakeholder groups <span>[<a href="#RFC8890" class="xref">RFC8890</a>]</span>.<a href="#section-4.2-4" class="pilcrow">¶</a></p>
 <p id="section-4.2-5">Yet another example is the administration of the Web's trust model, implemented by Web browsers as relying parties and Certificate Authorities as trust anchors. To assure that all parties meet the operational and security requirements necessary to provide the desired properties, the CA/Browser Forum was established as an oversight body that involves both of those parties as stakeholders.<a href="#section-4.2-5" class="pilcrow">¶</a></p>
 <p id="section-4.2-6">In each of these examples, setup and ongoing operation of a multi-stakeholder organization is not trivial. This is the major downside of such an approach. Additionally, the legitimacy of such an organization cannot be assumed, and may be difficult to establish and maintain (see, eg, <span>[<a href="#LEGITIMACY-MULTI" class="xref">LEGITIMACY-MULTI</a>]</span>). This concern is especially relevant if the function being coordinated is broad, complex, and/or contentious.<a href="#section-4.2-6" class="pilcrow">¶</a></p>
 </section>
@@ -1382,12 +1396,38 @@ shown here.<a href="#section-1.1-1" class="pilcrow">¶</a></p>
         <h3 id="name-blockchains-are-not-magical">
 <a href="#section-4.3" class="section-number selfRef">4.3. </a><a href="#name-blockchains-are-not-magical" class="section-name selfRef">Blockchains Are Not Magical</a>
         </h3>
-<p id="section-4.3-1">Increasingly, distributed consensus technologies such as the blockchain are touted as a solution to centralization issues.<a href="#section-4.3-1" class="pilcrow">¶</a></p>
-<p id="section-4.3-2">XXX<a href="#section-4.3-2" class="pilcrow">¶</a></p>
-<p id="section-4.3-3">Responsbility
-Privacy
-Performance
-Sustainability<a href="#section-4.3-3" class="pilcrow">¶</a></p>
+<p id="section-4.3-1">Increasingly, distributed consensus technologies such as the blockchain are touted as a solution to centralization issues. A complete survey of this rapidly-changing area is beyond the scope of this document, but at a high level, we can generalise about their properties.<a href="#section-4.3-1" class="pilcrow">¶</a></p>
+<p id="section-4.3-2">These techniques avoid centralization risk by distributing intermediary functions to members of a large pool of protocol participants. Verification of proper performance is typically guaranteed through a combination of cryptographic techniques and duplication of effort to check results.<a href="#section-4.3-2" class="pilcrow">¶</a></p>
+<p id="section-4.3-3">As such, they avoid direct centralization, and are robust against inherited centralization. Depending upon the application in question, indirect and platform centralization may still be possible, but in general these techniques do not lend themselves to these ends as readily as federated systems do.<a href="#section-4.3-3" class="pilcrow">¶</a></p>
+<p id="section-4.3-4">However, distributed consensus technologies have a number of potential shortcomings that may make them inappropriate -- or at least difficult to use for many Internet applications.<a href="#section-4.3-4" class="pilcrow">¶</a></p>
+<div id="privacy">
+<section id="section-4.3.1">
+          <h4 id="name-privacy">
+<a href="#section-4.3.1" class="section-number selfRef">4.3.1. </a><a href="#name-privacy" class="section-name selfRef">Privacy</a>
+        </h4>
+</section>
+</div>
+<div id="efficiency">
+<section id="section-4.3.2">
+          <h4 id="name-efficiency">
+<a href="#section-4.3.2" class="section-number selfRef">4.3.2. </a><a href="#name-efficiency" class="section-name selfRef">Efficiency</a>
+        </h4>
+</section>
+</div>
+<div id="performance">
+<section id="section-4.3.3">
+          <h4 id="name-performance">
+<a href="#section-4.3.3" class="section-number selfRef">4.3.3. </a><a href="#name-performance" class="section-name selfRef">Performance</a>
+        </h4>
+</section>
+</div>
+<div id="responsibility">
+<section id="section-4.3.4">
+          <h4 id="name-responsibility">
+<a href="#section-4.3.4" class="section-number selfRef">4.3.4. </a><a href="#name-responsibility" class="section-name selfRef">Responsibility</a>
+        </h4>
+</section>
+</div>
 </section>
 </div>
 </section>
