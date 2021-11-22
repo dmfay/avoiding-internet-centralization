@@ -84,7 +84,8 @@ Table of Contents
      5.4.  Protocol Evolution Can Be a Centralization Risk
      5.5.  Accomodate Limited Domains Warily
      5.6.  Build Higher Level Protocols
-     5.7.  Acknowledge the Limits of Protocol Design
+     5.7.  Separate Functions
+     5.8.  Acknowledge the Limits of Protocol Design
    6.  Security Considerations
    7.  References
      7.1.  Normative References
@@ -580,7 +581,9 @@ Table of Contents
 
    Platform centralization can be mitigated by XXX
 
-5.7.  Acknowledge the Limits of Protocol Design
+5.7.  Separate Functions
+
+5.8.  Acknowledge the Limits of Protocol Design
 
    XXX Indirect Platform
 
