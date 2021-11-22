@@ -3,9 +3,9 @@
 
 
 Network Working Group                                      M. Nottingham
-Internet-Draft                                          19 November 2021
+Internet-Draft                                          22 November 2021
 Intended status: Informational                                          
-Expires: 23 May 2022
+Expires: 26 May 2022
 
 
                     Avoiding Internet Centralization
@@ -17,8 +17,8 @@ Abstract
    This document defines the term, discusses why it is necessary for
    Internet protocol designers to consider centralization risks,
    identifies different kinds of centralization, catalogues some
-   limitations of current approaches to centralization, and recommends
-   practices to avoid them.
+   limitations of current approaches to controlling it, and recommends
+   best practices for protocol designers.
 
 Discussion Venues
 
@@ -42,7 +42,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 23 May 2022.
+   This Internet-Draft will expire on 26 May 2022.
 
 Copyright Notice
 
@@ -90,9 +90,9 @@ Table of Contents
 
 1.  Introduction
 
-   One reason the Internet is successful is its purposeful avoidance of
-   any single controlling entity.  While originally this approach may
-   have been driven by a desire to prevent a single technical failure
+   The Internet is successful in no small part because of its purposeful
+   avoidance of any single controlling entity.  While originally this
+   may have been due to a desire to prevent a single technical failure
    from having wide impact, it has also enabled the rapid adoption and
    broad spread of the Internet, because internetworking does not
    require obtaining permission from or ceding control to another entity
@@ -134,15 +134,16 @@ Table of Contents
    might be involved in.  Section 4 then catalogues current high-level
    approaches to mitigating centralization and discusses their
    limitations.  Finally, Section 5 discusses cross-cutting interactions
-   between centralization and protocol design.
+   between centralization and protocol design, recommending best
+   practices where appropriate.
 
-   The primary audience for this document is those involved in designing
-   and standardising Internet protocols.  However, designers of
+   Engineers who design and standardize Internet protocols are the
+   primary audience for this document.  However, designers of
    proprietary protocols can benefit from considering aspects of
    centralisation, especially if they intend their protocol to be
    considered for standardisation.  Likewise, policymakers can use this
-   document to help identify centralised protocols and applications, as
-   they might attract different kinds of regulation.
+   document to help identify and remedy inappropriately centralized
+   protocols and applications.
 
 1.1.  Notational Conventions
 
@@ -160,16 +161,24 @@ Table of Contents
    communication, rather than having a relationship of subservience to
    others' requirements or coercion by them.
 
-   Of particular concern is intermediation in Internet protocols,
-   because a third party in communication gains 'informational and
-   positional advantages' [INTERMEDIARY-INFLUENCE].  That power can be
-   used to observe behavior (the 'panopticon effect') and shape or even
-   deny behaviour (the 'chokepoint effect') -- which can be used those
-   parties (or the states that have authority over them) for coercive
-   ends [WEAPONIZED-INTERDEPENDENCE].
+   Many Internet protocols allow a third party to be interposed into
+   communication between two other parties -- by necessity, by
+   happenstance, or at the option of one or both of the participants.
+   This is often characterised as _intermediation_, and is often used to
+   help provide a protocol's functions, and may be necessary for some of
+   them.  However, the 'informational and positional advantages'
+   [INTERMEDIARY-INFLUENCE] gained can be used to observe behavior (the
+   'panopticon effect') and shape or even deny behaviour (the
+   'chokepoint effect') -- which can be used those parties (or the
+   states that have authority over them) for coercive ends
+   [WEAPONIZED-INTERDEPENDENCE].
 
-   Additionally, centralisation's concentration of power into few hands
-   has deleterious effects on the Internet itself, including:
+   As Internet protocols' first duty is to the end user [RFC8890],
+   allowing such power to be concentrated into few hands is counter to
+   the goals of the Internet.
+
+   Additionally, concentration of power has deleterious effects on the
+   Internet itself, including:
 
    *  _Innovation_: Centralized protocols can preclude the possibility
       of 'permissionless innovation' -- the ability to deploy new,
@@ -193,9 +202,8 @@ Table of Contents
 
    To summarize, Internet protocols avoid centralization because
    allowing it would allow the Internet (or some part of it) to be
-   captured by a single entity, effectively turning it into a 'walled
-   garden' that fails to meet its architectural design goals and users'
-   expectations.
+   captured, effectively turning it into a 'walled garden' that fails to
+   meet its architectural design goals and users' expectations.
 
 3.  Kinds of Centralization
 
@@ -222,8 +230,8 @@ Table of Contents
 
 3.2.  Necessary Centralization
 
-   Depending upon a protocol's requirements, it is not always possible
-   to avoid introducing centralization risk -- in particular:
+   Some protocol requirements require the introduction of centralization
+   risk -- in particular:
 
    *  When there is a requirement for a single, global 'source of truth'
       (e.g., for unambiguous naming), or
@@ -250,21 +258,22 @@ Table of Contents
 
 3.3.  Indirect Centralization
 
-   Even when defined to allow direct endpoint-to-endpoint communication,
-   a protocol might become centralized if external factors influence its
-   deployment, making it difficult or impossible to realize the
-   protocol's value unless a central facility is used.
+   Even if a protocol disallows direct centralization (perhaps using one
+   of the techniques discussed in Section 4) and does not exhibit any
+   necessary centralization, it might become centralized in practice
+   when external factors influence its deployment.
 
-   Such factors might be economic, social, or legal.  Often, they are
-   related to the network effects that are so often seen on the
-   Internet.
+   Indirect centralization is caused by factors making it difficult or
+   impossible to realize the protocol's value unless a central facility
+   is used.  Such factors might be economic, social, or legal.
 
-   While in theory every node on the Internet is equal, in practice some
-   nodes are much more connected than others: for example, just a few
-   sites drive much of the traffic on the Web. While expected and
-   observed in many kinds of networks [SCALE-FREE], the resulting
-   network effects award asymmetric power to nodes that act as
-   intermediaries to communication.
+   Often, they are related to the network effects that are so often seen
+   on the Internet.  While in theory every node on the Internet is
+   equal, in practice some nodes are much more connected than others:
+   for example, just a few sites drive much of the traffic on the Web.
+   While expected and observed in many kinds of networks [SCALE-FREE],
+   the resulting network effects award asymmetric power to nodes that
+   act as intermediaries to communication.
 
    For example, cloud computing is used to deploy many Internet
    protocols.  Although the base concepts and control protocols for it
@@ -273,21 +282,24 @@ Table of Contents
    as well as some social factors regarding developer familiarity and
    comfort encourage convergence on a small number of cloud providers.
 
-   Social networking is another Internet application that suffers from
-   this type of centralization, despite standardization efforts (see,
-   e.g., [W3C.CR-activitystreams-core-20161215]), due to the powerful
-   network effects associated.
+   In some cases, these factors cause a directly centralized protocol or
+   application to be favoured over a decentralized one.  For example,
+   social networking is an application that is currently supplied by a
+   small number of directly centralized, proprietary platforms despite
+   standardization efforts (see, e.g.,
+   [W3C.CR-activitystreams-core-20161215]), due to the powerful network
+   effects associated.
 
-   Some have been concerned that DoH [RFC8484] also has this type of
+   Some have expressed concern that DoH [RFC8484] also has this type of
    centralization risk, because initial deployments defaulted to a pre-
    selected service run by one commercial operator.
 
 3.4.  Inherited Centralization
 
-   Most Internet protocols depend on other, 'lower-layer' protocols to
-   function.  The features, deployment, and operation of these
-   dependencies can surface centralization risk into protocols operating
-   'on top' of them.
+   Most Internet protocols depend on other, 'lower-layer' protocols.
+   The features, deployment, and operation of these dependencies can
+   surface centralization risk into protocols operating 'on top' of
+   them.
 
    For example, the network between endpoints can introduce
    centralization risk to application-layer protocols, because it is
@@ -295,7 +307,7 @@ Table of Contents
    network might block access to, slow down, or modify the content of
    various application protocols or specific services for financial,
    political, operational, or criminal reasons, thereby creating
-   pressure to use other services, which can in turnresult in
+   pressure to use other services, which can in turn result in
    centralization.
 
    Inherited centralization risk is only present when users cannot use

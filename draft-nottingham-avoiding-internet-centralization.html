@@ -7,7 +7,7 @@
 <title>Avoiding Internet Centralization</title>
 <meta content="Mark Nottingham" name="author">
 <meta content="
-       Avoiding centralization is an important goal for Internet protocols. This document defines the term, discusses why it is necessary for Internet protocol designers to consider centralization risks, identifies different kinds of centralization, catalogues some limitations of current approaches to centralization, and recommends practices to avoid them. 
+       Avoiding centralization is an important goal for Internet protocols. This document defines the term, discusses why it is necessary for Internet protocol designers to consider centralization risks, identifies different kinds of centralization, catalogues some limitations of current approaches to controlling it, and recommends best practices for protocol designers. 
     " name="description">
 <meta content="xml2rfc 3.11.1" name="generator">
 <meta content="Internet-Draft" name="keyword">
@@ -1044,7 +1044,7 @@ svg [stroke="fill"], svg [fill^="#fff"] {
 </tr></thead>
 <tfoot><tr>
 <td class="left">Nottingham</td>
-<td class="center">Expires 23 May 2022</td>
+<td class="center">Expires 26 May 2022</td>
 <td class="right">[Page]</td>
 </tr></tfoot>
 </table>
@@ -1057,12 +1057,12 @@ svg [stroke="fill"], svg [fill^="#fff"] {
 <dd class="internet-draft">draft-nottingham-avoiding-internet-centralization-latest</dd>
 <dt class="label-published">Published:</dt>
 <dd class="published">
-<time datetime="2021-11-19" class="published">19 November 2021</time>
+<time datetime="2021-11-22" class="published">22 November 2021</time>
     </dd>
 <dt class="label-intended-status">Intended Status:</dt>
 <dd class="intended-status">Informational</dd>
 <dt class="label-expires">Expires:</dt>
-<dd class="expires"><time datetime="2022-05-23">23 May 2022</time></dd>
+<dd class="expires"><time datetime="2022-05-26">26 May 2022</time></dd>
 <dt class="label-authors">Author:</dt>
 <dd class="authors">
 <div class="author">
@@ -1074,7 +1074,7 @@ svg [stroke="fill"], svg [fill^="#fff"] {
 <h1 id="title">Avoiding Internet Centralization</h1>
 <section id="section-abstract">
       <h2 id="abstract"><a href="#abstract" class="selfRef">Abstract</a></h2>
-<p id="section-abstract-1">Avoiding centralization is an important goal for Internet protocols. This document defines the term, discusses why it is necessary for Internet protocol designers to consider centralization risks, identifies different kinds of centralization, catalogues some limitations of current approaches to centralization, and recommends practices to avoid them.<a href="#section-abstract-1" class="pilcrow">¶</a></p>
+<p id="section-abstract-1">Avoiding centralization is an important goal for Internet protocols. This document defines the term, discusses why it is necessary for Internet protocol designers to consider centralization risks, identifies different kinds of centralization, catalogues some limitations of current approaches to controlling it, and recommends best practices for protocol designers.<a href="#section-abstract-1" class="pilcrow">¶</a></p>
 </section>
 <section class="note rfcEditorRemove" id="section-note.1">
       <h2 id="name-discussion-venues">
@@ -1103,7 +1103,7 @@ svg [stroke="fill"], svg [fill^="#fff"] {
         time. It is inappropriate to use Internet-Drafts as reference
         material or to cite them other than as "work in progress."<a href="#section-boilerplate.1-3" class="pilcrow">¶</a></p>
 <p id="section-boilerplate.1-4">
-        This Internet-Draft will expire on 23 May 2022.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
+        This Internet-Draft will expire on 26 May 2022.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="copyright">
@@ -1232,13 +1232,13 @@ svg [stroke="fill"], svg [fill^="#fff"] {
       <h2 id="name-introduction">
 <a href="#section-1" class="section-number selfRef">1. </a><a href="#name-introduction" class="section-name selfRef">Introduction</a>
       </h2>
-<p id="section-1-1">One reason the Internet is successful is its purposeful avoidance of any single controlling entity. While originally this approach may have been driven by a desire to prevent a single technical failure from having wide impact, it has also enabled the rapid adoption and broad spread of the Internet, because internetworking does not require obtaining permission from or ceding control to another entity -- thereby accommodating a spectrum of political and social requirements.<a href="#section-1-1" class="pilcrow">¶</a></p>
+<p id="section-1-1">The Internet is successful in no small part because of its purposeful avoidance of any single controlling entity. While originally this may have been due to a desire to prevent a single technical failure from having wide impact, it has also enabled the rapid adoption and broad spread of the Internet, because internetworking does not require obtaining permission from or ceding control to another entity -- thereby accommodating a spectrum of political and social requirements.<a href="#section-1-1" class="pilcrow">¶</a></p>
 <p id="section-1-2">This means that protocols that are considered part of the Internet share a common design goal: avoiding centralization, which we define as the ability of a single person, company, or government -- or a small group of them -- to observe, control, or extract rent from the protocol's operation or use.<a href="#section-1-2" class="pilcrow">¶</a></p>
 <p id="section-1-3">At the same time, the utility of many Internet protocols is enabled or significantly enhanced by ceding some aspect of communication between two parties to a third party -- often, in a manner that has centralization risk. For example, there might be a need for a 'single source of truth' or a rendezvous facility to allow endpoints to find each other. How should such protocols be designed?<a href="#section-1-3" class="pilcrow">¶</a></p>
 <p id="section-1-4">Furthermore, many successful proprietary protocols and applications on the Internet are de facto centralized. Some have become so well-known that they are commonly mistaken for the Internet itself. In other cases, Internet protocols seem to favour centralized deployments due to economic and social factors. Should standards efforts attempt to mitigate centralization in these cases, and if so, how?<a href="#section-1-4" class="pilcrow">¶</a></p>
 <p id="section-1-5">Finally, some autonomous networks have requirements to control the operation of Internet protocols internally, and some users or groups of users might cede control of some aspect of how they use the Internet to a central authority, either voluntarily or under legal compulsion. In both of these cases, should Internet protocols accommodate such requirements, and if so, how?<a href="#section-1-5" class="pilcrow">¶</a></p>
-<p id="section-1-6">This document discusses aspects of centralization with regard to Internet protocol design. <a href="#why" class="xref">Section 2</a> explains why it is necessary for Internet protocols to avoid centralization when possible. <a href="#kinds" class="xref">Section 3</a> surveys the different kinds of centralization that Internet protocols might be involved in. <a href="#limitations" class="xref">Section 4</a> then catalogues current high-level approaches to mitigating centralization and discusses their limitations. Finally, <a href="#considerations" class="xref">Section 5</a> discusses cross-cutting interactions between centralization and protocol design.<a href="#section-1-6" class="pilcrow">¶</a></p>
-<p id="section-1-7">The primary audience for this document is those involved in designing and standardising Internet protocols. However, designers of proprietary protocols can benefit from considering aspects of centralisation, especially if they intend their protocol to be considered for standardisation. Likewise, policymakers can use this document to help identify centralised protocols and applications, as they might attract different kinds of regulation.<a href="#section-1-7" class="pilcrow">¶</a></p>
+<p id="section-1-6">This document discusses aspects of centralization with regard to Internet protocol design. <a href="#why" class="xref">Section 2</a> explains why it is necessary for Internet protocols to avoid centralization when possible. <a href="#kinds" class="xref">Section 3</a> surveys the different kinds of centralization that Internet protocols might be involved in. <a href="#decentralization" class="xref">Section 4</a> then catalogues current high-level approaches to mitigating centralization and discusses their limitations. Finally, <a href="#considerations" class="xref">Section 5</a> discusses cross-cutting interactions between centralization and protocol design, recommending best practices where appropriate.<a href="#section-1-6" class="pilcrow">¶</a></p>
+<p id="section-1-7">Engineers who design and standardize Internet protocols are the primary audience for this document. However, designers of proprietary protocols can benefit from considering aspects of centralisation, especially if they intend their protocol to be considered for standardisation. Likewise, policymakers can use this document to help identify and remedy inappropriately centralized protocols and applications.<a href="#section-1-7" class="pilcrow">¶</a></p>
 <div id="notational-conventions">
 <section id="section-1.1">
         <h3 id="name-notational-conventions">
@@ -1258,20 +1258,21 @@ shown here.<a href="#section-1.1-1" class="pilcrow">¶</a></p>
 <a href="#section-2" class="section-number selfRef">2. </a><a href="#name-why-avoid-centralization" class="section-name selfRef">Why Avoid Centralization</a>
       </h2>
 <p id="section-2-1">As a 'large, heterogeneous collection of interconnected systems' <span>[<a href="#BCP95" class="xref">BCP95</a>]</span> the Internet is often characterised as a 'network of networks'. As such, networks relate as peers who agree to facilitate communication, rather than having a relationship of subservience to others' requirements or coercion by them.<a href="#section-2-1" class="pilcrow">¶</a></p>
-<p id="section-2-2">Of particular concern is intermediation in Internet protocols, because a third party in communication gains 'informational and positional advantages' <span>[<a href="#INTERMEDIARY-INFLUENCE" class="xref">INTERMEDIARY-INFLUENCE</a>]</span>. That power can be used to observe behavior (the 'panopticon effect') and shape or even deny behaviour (the 'chokepoint effect') -- which can be used those parties (or the states that have authority over them) for coercive ends <span>[<a href="#WEAPONIZED-INTERDEPENDENCE" class="xref">WEAPONIZED-INTERDEPENDENCE</a>]</span>.<a href="#section-2-2" class="pilcrow">¶</a></p>
-<p id="section-2-3">Additionally, centralisation's concentration of power into few hands has deleterious effects on the Internet itself, including:<a href="#section-2-3" class="pilcrow">¶</a></p>
+<p id="section-2-2">Many Internet protocols allow a third party to be interposed into communication between two other parties -- by necessity, by happenstance, or at the option of one or both of the participants. This is often characterised as <em>intermediation</em>, and is often used to help provide a protocol's functions, and may be necessary for some of them. However, the 'informational and positional advantages' <span>[<a href="#INTERMEDIARY-INFLUENCE" class="xref">INTERMEDIARY-INFLUENCE</a>]</span> gained can be used to observe behavior (the 'panopticon effect') and shape or even deny behaviour (the 'chokepoint effect') -- which can be used those parties (or the states that have authority over them) for coercive ends <span>[<a href="#WEAPONIZED-INTERDEPENDENCE" class="xref">WEAPONIZED-INTERDEPENDENCE</a>]</span>.<a href="#section-2-2" class="pilcrow">¶</a></p>
+<p id="section-2-3">As Internet protocols' first duty is to the end user <span>[<a href="#RFC8890" class="xref">RFC8890</a>]</span>, allowing such power to be concentrated into few hands is counter to the goals of the Internet.<a href="#section-2-3" class="pilcrow">¶</a></p>
+<p id="section-2-4">Additionally, concentration of power has deleterious effects on the Internet itself, including:<a href="#section-2-4" class="pilcrow">¶</a></p>
 <ul class="normal">
-<li class="normal" id="section-2-4.1">
-          <em>Innovation</em>: Centralized protocols can preclude the possibility of 'permissionless innovation' -- the ability to deploy new, unforeseen applications without requiring coordination with parties other than those you are communicating with.<a href="#section-2-4.1" class="pilcrow">¶</a>
+<li class="normal" id="section-2-5.1">
+          <em>Innovation</em>: Centralized protocols can preclude the possibility of 'permissionless innovation' -- the ability to deploy new, unforeseen applications without requiring coordination with parties other than those you are communicating with.<a href="#section-2-5.1" class="pilcrow">¶</a>
 </li>
-        <li class="normal" id="section-2-4.2">
-          <em>Competition</em>: The Internet and its users benefit from robust competition when applications and services are available from many different providers -- especially when those users can build their own applications and services based upon interoperable standards. When dependencies are formed on a centralized service or platform, it effectively becomes an essential facility, which encourages abuse of power.<a href="#section-2-4.2" class="pilcrow">¶</a>
+        <li class="normal" id="section-2-5.2">
+          <em>Competition</em>: The Internet and its users benefit from robust competition when applications and services are available from many different providers -- especially when those users can build their own applications and services based upon interoperable standards. When dependencies are formed on a centralized service or platform, it effectively becomes an essential facility, which encourages abuse of power.<a href="#section-2-5.2" class="pilcrow">¶</a>
 </li>
-        <li class="normal" id="section-2-4.3">
-          <em>Availability</em>: The Internet's availability (as well as applications and services built upon it) improves when there are many ways to obtain access to it. While centralized services typically benefit from the focused attention that their elevated role requires, when they do fail, the resulting loss of availability can have disproportionate impact.<a href="#section-2-4.3" class="pilcrow">¶</a>
+        <li class="normal" id="section-2-5.3">
+          <em>Availability</em>: The Internet's availability (as well as applications and services built upon it) improves when there are many ways to obtain access to it. While centralized services typically benefit from the focused attention that their elevated role requires, when they do fail, the resulting loss of availability can have disproportionate impact.<a href="#section-2-5.3" class="pilcrow">¶</a>
 </li>
       </ul>
-<p id="section-2-5">To summarize, Internet protocols avoid centralization because allowing it would allow the Internet (or some part of it) to be captured by a single entity, effectively turning it into a 'walled garden' that fails to meet its architectural design goals and users' expectations.<a href="#section-2-5" class="pilcrow">¶</a></p>
+<p id="section-2-6">To summarize, Internet protocols avoid centralization because allowing it would allow the Internet (or some part of it) to be captured, effectively turning it into a 'walled garden' that fails to meet its architectural design goals and users' expectations.<a href="#section-2-6" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="kinds">
@@ -1295,7 +1296,7 @@ shown here.<a href="#section-1.1-1" class="pilcrow">¶</a></p>
         <h3 id="name-necessary-centralization">
 <a href="#section-3.2" class="section-number selfRef">3.2. </a><a href="#name-necessary-centralization" class="section-name selfRef">Necessary Centralization</a>
         </h3>
-<p id="section-3.2-1">Depending upon a protocol's requirements, it is not always possible to avoid introducing centralization risk -- in particular:<a href="#section-3.2-1" class="pilcrow">¶</a></p>
+<p id="section-3.2-1">Some protocol requirements require the introduction of centralization risk -- in particular:<a href="#section-3.2-1" class="pilcrow">¶</a></p>
 <ul class="normal">
 <li class="normal" id="section-3.2-2.1">When there is a requirement for a single, global 'source of truth' (e.g., for unambiguous naming), or<a href="#section-3.2-2.1" class="pilcrow">¶</a>
 </li>
@@ -1314,12 +1315,12 @@ shown here.<a href="#section-1.1-1" class="pilcrow">¶</a></p>
         <h3 id="name-indirect-centralization">
 <a href="#section-3.3" class="section-number selfRef">3.3. </a><a href="#name-indirect-centralization" class="section-name selfRef">Indirect Centralization</a>
         </h3>
-<p id="section-3.3-1">Even when defined to allow direct endpoint-to-endpoint communication, a protocol might become centralized if external factors influence its deployment, making it difficult or impossible to realize the protocol's value unless a central facility is used.<a href="#section-3.3-1" class="pilcrow">¶</a></p>
-<p id="section-3.3-2">Such factors might be economic, social, or legal. Often, they are related to the network effects that are so often seen on the Internet.<a href="#section-3.3-2" class="pilcrow">¶</a></p>
-<p id="section-3.3-3">While in theory every node on the Internet is equal, in practice some nodes are much more connected than others: for example, just a few sites drive much of the traffic on the Web. While expected and observed in many kinds of networks <span>[<a href="#SCALE-FREE" class="xref">SCALE-FREE</a>]</span>, the resulting network effects award asymmetric power to nodes that act as intermediaries to communication.<a href="#section-3.3-3" class="pilcrow">¶</a></p>
+<p id="section-3.3-1">Even if a protocol disallows direct centralization (perhaps using one of the techniques discussed in <a href="#decentralization" class="xref">Section 4</a>) and does not exhibit any necessary centralization, it might become centralized in practice when external factors influence its deployment.<a href="#section-3.3-1" class="pilcrow">¶</a></p>
+<p id="section-3.3-2">Indirect centralization is caused by factors making it difficult or impossible to realize the protocol's value unless a central facility is used. Such factors might be economic, social, or legal.<a href="#section-3.3-2" class="pilcrow">¶</a></p>
+<p id="section-3.3-3">Often, they are related to the network effects that are so often seen on the Internet. While in theory every node on the Internet is equal, in practice some nodes are much more connected than others: for example, just a few sites drive much of the traffic on the Web. While expected and observed in many kinds of networks <span>[<a href="#SCALE-FREE" class="xref">SCALE-FREE</a>]</span>, the resulting network effects award asymmetric power to nodes that act as intermediaries to communication.<a href="#section-3.3-3" class="pilcrow">¶</a></p>
 <p id="section-3.3-4">For example, cloud computing is used to deploy many Internet protocols. Although the base concepts and control protocols for it are decentralized in the sense that there is no need for a single, central cloud provider, the economics of providing compute at scale as well as some social factors regarding developer familiarity and comfort encourage convergence on a small number of cloud providers.<a href="#section-3.3-4" class="pilcrow">¶</a></p>
-<p id="section-3.3-5">Social networking is another Internet application that suffers from this type of centralization, despite standardization efforts (see, e.g., <span>[<a href="#W3C.CR-activitystreams-core-20161215" class="xref">W3C.CR-activitystreams-core-20161215</a>]</span>), due to the powerful network effects associated.<a href="#section-3.3-5" class="pilcrow">¶</a></p>
-<p id="section-3.3-6">Some have been concerned that DoH <span>[<a href="#RFC8484" class="xref">RFC8484</a>]</span> also has this type of centralization risk, because initial deployments defaulted to a pre-selected service run by one commercial operator.<a href="#section-3.3-6" class="pilcrow">¶</a></p>
+<p id="section-3.3-5">In some cases, these factors cause a directly centralized protocol or application to be favoured over a decentralized one. For example, social networking is an application that is currently supplied by a small number of directly centralized, proprietary platforms despite standardization efforts (see, e.g., <span>[<a href="#W3C.CR-activitystreams-core-20161215" class="xref">W3C.CR-activitystreams-core-20161215</a>]</span>), due to the powerful network effects associated.<a href="#section-3.3-5" class="pilcrow">¶</a></p>
+<p id="section-3.3-6">Some have expressed concern that DoH <span>[<a href="#RFC8484" class="xref">RFC8484</a>]</span> also has this type of centralization risk, because initial deployments defaulted to a pre-selected service run by one commercial operator.<a href="#section-3.3-6" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="network">
@@ -1327,8 +1328,8 @@ shown here.<a href="#section-1.1-1" class="pilcrow">¶</a></p>
         <h3 id="name-inherited-centralization">
 <a href="#section-3.4" class="section-number selfRef">3.4. </a><a href="#name-inherited-centralization" class="section-name selfRef">Inherited Centralization</a>
         </h3>
-<p id="section-3.4-1">Most Internet protocols depend on other, 'lower-layer' protocols to function. The features, deployment, and operation of these dependencies can surface centralization risk into protocols operating 'on top' of them.<a href="#section-3.4-1" class="pilcrow">¶</a></p>
-<p id="section-3.4-2">For example, the network between endpoints can introduce centralization risk to application-layer protocols, because it is necessary for communication and therefore has power over it. A given network might block access to, slow down, or modify the content of various application protocols or specific services for financial, political, operational, or criminal reasons, thereby creating pressure to use other services, which can in turnresult in centralization.<a href="#section-3.4-2" class="pilcrow">¶</a></p>
+<p id="section-3.4-1">Most Internet protocols depend on other, 'lower-layer' protocols. The features, deployment, and operation of these dependencies can surface centralization risk into protocols operating 'on top' of them.<a href="#section-3.4-1" class="pilcrow">¶</a></p>
+<p id="section-3.4-2">For example, the network between endpoints can introduce centralization risk to application-layer protocols, because it is necessary for communication and therefore has power over it. A given network might block access to, slow down, or modify the content of various application protocols or specific services for financial, political, operational, or criminal reasons, thereby creating pressure to use other services, which can in turn result in centralization.<a href="#section-3.4-2" class="pilcrow">¶</a></p>
 <p id="section-3.4-3">Inherited centralization risk is only present when users cannot use an alternative means of accessing the desired service. For example, users often have flexibility in choice of Internet access, so they could just 'route around' a network that impacts their chosen service. However, such choices are often not available in the moment, and the Internet's topology means that a 'choke point' upstream could still affect their Internet access.<a href="#section-3.4-3" class="pilcrow">¶</a></p>
 </section>
 </div>
@@ -1344,7 +1345,7 @@ shown here.<a href="#section-1.1-1" class="pilcrow">¶</a></p>
 </div>
 </section>
 </div>
-<div id="limitations">
+<div id="decentralization">
 <section id="section-4">
       <h2 id="name-the-limits-of-decentralizat">
 <a href="#section-4" class="section-number selfRef">4. </a><a href="#name-the-limits-of-decentralizat" class="section-name selfRef">The Limits of Decentralization</a>
