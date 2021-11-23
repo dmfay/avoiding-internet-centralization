@@ -1199,10 +1199,7 @@ svg [stroke="fill"], svg [fill^="#fff"] {
                 <p id="section-toc.1-1.5.2.6.1"><a href="#section-5.6" class="xref">5.6</a>.  <a href="#name-build-higher-level-protocol" class="xref">Build Higher Level Protocols</a></p>
 </li>
               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5.2.7">
-                <p id="section-toc.1-1.5.2.7.1"><a href="#section-5.7" class="xref">5.7</a>.  <a href="#name-separate-functions" class="xref">Separate Functions</a></p>
-</li>
-              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5.2.8">
-                <p id="section-toc.1-1.5.2.8.1"><a href="#section-5.8" class="xref">5.8</a>.  <a href="#name-acknowledge-the-limits-of-p" class="xref">Acknowledge the Limits of Protocol Design</a></p>
+                <p id="section-toc.1-1.5.2.7.1"><a href="#section-5.7" class="xref">5.7</a>.  <a href="#name-acknowledge-the-limits-of-p" class="xref">Acknowledge the Limits of Protocol Design</a></p>
 </li>
             </ul>
 </li>
@@ -1417,10 +1414,10 @@ shown here.<a href="#section-1.1-1" class="pilcrow">¶</a></p>
         <h3 id="name-allow-intermediation-sparin">
 <a href="#section-5.1" class="section-number selfRef">5.1. </a><a href="#name-allow-intermediation-sparin" class="section-name selfRef">Allow Intermediation Sparingly</a>
         </h3>
-<p id="section-5.1-1">The introduction of an intermediary role -- i.e., a party that is required for communication to take place between endpoints -- adds centralization risk to Internet protocols, because it brings the opportunity for control.<a href="#section-5.1-1" class="pilcrow">¶</a></p>
+<p id="section-5.1-1">The introduction of an intermediary role -- i.e., a party that is required for communication to take place between endpoints -- adds centralization risk to Internet protocols, because it brings opportunities for control and observiation.<a href="#section-5.1-1" class="pilcrow">¶</a></p>
 <p id="section-5.1-2">However, intermediation can sometimes add significant value to a protocol, or enable what is considered a necessary function. In such cases, the centralized function SHOULD be as minimal as possible, and expose only the information and pontential for control necessary for that function to be performed. Protocol designers SHOULD consider the likely deployment patterns for those intermediaries and how network effects and other factors will influence them.<a href="#section-5.1-2" class="pilcrow">¶</a></p>
 <p id="section-5.1-3">Note that intermediation can also be used to control access to information or impose functional boundaries, so as to reduce the need to trust potentially malicious endpoints. For example, there are a number of so-called 'oblivious' protocols currently in development that allow end users to hide details that might identify them from services, while still accessing those services.<a href="#section-5.1-3" class="pilcrow">¶</a></p>
-<p id="section-5.1-4">The same guidance applies in these cases; the information and control potential SHOULD be as minimal as possible, while still meeting the design goals of the protocol.<a href="#section-5.1-4" class="pilcrow">¶</a></p>
+<p id="section-5.1-4">The same guidance applies in these cases; the observation and control potential SHOULD be as minimal as possible, while still meeting the design goals of the protocol.<a href="#section-5.1-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="encrypt">
@@ -1472,21 +1469,14 @@ shown here.<a href="#section-1.1-1" class="pilcrow">¶</a></p>
 <p id="section-5.6-1">Platform centralization can be mitigated by XXX<a href="#section-5.6-1" class="pilcrow">¶</a></p>
 </section>
 </div>
-<div id="separate-functions">
-<section id="section-5.7">
-        <h3 id="name-separate-functions">
-<a href="#section-5.7" class="section-number selfRef">5.7. </a><a href="#name-separate-functions" class="section-name selfRef">Separate Functions</a>
-      </h3>
-</section>
-</div>
 <div id="acknowledge-the-limits-of-protocol-design">
-<section id="section-5.8">
+<section id="section-5.7">
         <h3 id="name-acknowledge-the-limits-of-p">
-<a href="#section-5.8" class="section-number selfRef">5.8. </a><a href="#name-acknowledge-the-limits-of-p" class="section-name selfRef">Acknowledge the Limits of Protocol Design</a>
+<a href="#section-5.7" class="section-number selfRef">5.7. </a><a href="#name-acknowledge-the-limits-of-p" class="section-name selfRef">Acknowledge the Limits of Protocol Design</a>
         </h3>
-<p id="section-5.8-1">XXX
+<p id="section-5.7-1">XXX
 Indirect
-Platform<a href="#section-5.8-1" class="pilcrow">¶</a></p>
+Platform<a href="#section-5.7-1" class="pilcrow">¶</a></p>
 </section>
 </div>
 </section>

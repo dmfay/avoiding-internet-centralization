@@ -80,8 +80,7 @@ Table of Contents
      5.4.  Protocol Evolution Can Be a Centralization Risk
      5.5.  Accomodate Limited Domains Warily
      5.6.  Build Higher Level Protocols
-     5.7.  Separate Functions
-     5.8.  Acknowledge the Limits of Protocol Design
+     5.7.  Acknowledge the Limits of Protocol Design
    6.  Security Considerations
    7.  References
      7.1.  Normative References
@@ -503,8 +502,8 @@ Table of Contents
 
    The introduction of an intermediary role -- i.e., a party that is
    required for communication to take place between endpoints -- adds
-   centralization risk to Internet protocols, because it brings the
-   opportunity for control.
+   centralization risk to Internet protocols, because it brings
+   opportunities for control and observiation.
 
    However, intermediation can sometimes add significant value to a
    protocol, or enable what is considered a necessary function.  In such
@@ -521,7 +520,7 @@ Table of Contents
    that allow end users to hide details that might identify them from
    services, while still accessing those services.
 
-   The same guidance applies in these cases; the information and control
+   The same guidance applies in these cases; the observation and control
    potential SHOULD be as minimal as possible, while still meeting the
    design goals of the protocol.
 
@@ -604,9 +603,7 @@ Table of Contents
 
    Platform centralization can be mitigated by XXX
 
-5.7.  Separate Functions
-
-5.8.  Acknowledge the Limits of Protocol Design
+5.7.  Acknowledge the Limits of Protocol Design
 
    XXX Indirect Platform
 
