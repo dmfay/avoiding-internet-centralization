@@ -606,14 +606,28 @@ Table of Contents
 5.6.  Build Higher Level Protocols
 
    Platform centralization also happens when standards do not attempt to
-   define higher-level functions that proprietary platforms provide.
+   define the higher-level functions that proprietary platforms provide.
+   This often happens when those platforms are perceived to have
+   captured the relevant functions.
+
+   However, changes in user requirements and legal regulation can
+   obviate such perceptions.
 
 5.7.  Acknowledge the Limits of Protocol Design
 
    Centralization cannot be prevented through protocol design and
-   standardization efforts alone.
+   standardization efforts alone.  While the guidelines above may
+   forestall some types of centralization, indirect and platform
+   centralization are caused by factors outside the control of a
+   protocol's architecture.
 
-   XXX Indirect Platform
+   Thankfully, architecture is not the only form of regulation; legal
+   mechanisms combined with changing norms and the resulting market
+   forces have their own regulatory effects.  [NEW-CHICAGO]
+
+   In this view, the job of a protocol designer is to avoid
+   centralization with architecture where possible, but where it is not,
+   to create affordances for these other regulating forces.
 
 6.  Security Considerations
 
@@ -667,6 +681,9 @@ Table of Contents
    [MOXIE]    Marlinspike, M., "Reflections: The ecosystem is moving",
               May 2016,
               <https://signal.org/blog/the-ecosystem-is-moving/>.
+
+   [NEW-CHICAGO]
+              Lessig, L., "The New Chicago School", June 1998.
 
    [RFC1035]  Mockapetris, P., "Domain names - implementation and
               specification", STD 13, RFC 1035, DOI 10.17487/RFC1035,
