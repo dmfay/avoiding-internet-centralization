@@ -3,9 +3,9 @@
 
 
 Network Working Group                                      M. Nottingham
-Internet-Draft                                          23 November 2021
+Internet-Draft                                          24 November 2021
 Intended status: Informational                                          
-Expires: 27 May 2022
+Expires: 28 May 2022
 
 
                     Avoiding Internet Centralization
@@ -42,7 +42,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 27 May 2022.
+   This Internet-Draft will expire on 28 May 2022.
 
 Copyright Notice
 
@@ -77,8 +77,8 @@ Table of Contents
      5.1.  Allow Intermediation Sparingly
      5.2.  Encrypt, Always
      5.3.  Reuse Existing Tools
-     5.4.  Protocol Evolution Can Be a Centralization Risk
-     5.5.  Accomodate Limited Domains Warily
+     5.4.  Accomodate Limited Domains Warily
+     5.5.  Protocol Evolution Can Be a Centralization Risk
      5.6.  Build Higher Level Protocols
      5.7.  Acknowledge the Limits of Protocol Design
    6.  Security Considerations
@@ -500,10 +500,12 @@ Table of Contents
 
 5.1.  Allow Intermediation Sparingly
 
-   The introduction of an intermediary role -- i.e., a party that is
-   required for communication to take place between endpoints -- adds
+   The introduction of an intermediary role -- i.e., one that performs a
+   function but is not a first party to that communication -- adds
    centralization risk to Internet protocols, because it brings
-   opportunities for control and observiation.
+   opportunities for control and observation.  Even when the protocol is
+   federated (see Section 4.1) to avoid direct centralization,
+   significant indirect centralization risks exist.
 
    However, intermediation can sometimes add significant value to a
    protocol, or enable what is considered a necessary function.  In such
@@ -524,6 +526,8 @@ Table of Contents
    potential SHOULD be as minimal as possible, while still meeting the
    design goals of the protocol.
 
+   See [I-D.thomson-tmi] for more guidance.
+
 5.2.  Encrypt, Always
 
    When deployed at scale, encryption can be an effective technique to
@@ -534,7 +538,9 @@ Table of Contents
 
    Note that the benefits are most pronounced when the majority (if not
    all) traffic is encrypted.  As a result, protocols SHOULD be
-   encrypted by default.  See also [RFC7258].
+   encrypted by default.
+
+   See also [RFC7258].
 
 5.3.  Reuse Existing Tools
 
@@ -547,36 +553,7 @@ Table of Contents
    establishing a new system, because its centralization risk is known
    and understood (see Section 4.2).
 
-   XXX
-
-5.4.  Protocol Evolution Can Be a Centralization Risk
-
-   An important feature of Internet protocols is their ability to evolve
-   over time, so that they can meet new requirements and adapt to new
-   conditions without requiring a 'flag day' to convert users.
-   Typically, protocol evolution is accommodated through extension
-   mechanisms, where optional features can be added over time in an
-   interoperable fashion.
-
-   Protocol extensions can become a centralization risk if a powerful
-   entry can change the target for meaningful interoperability by adding
-   proprietary extensions to a standard protocol.  This is especially
-   true when the core standard does not itself provide sufficient
-   utility to be appealing on its own.
-
-   This kind of centralization risk can be mitigated in a few ways.
-   First and foremost, Internet protocols SHOULD provide concrete
-   utility to the majority of their users as published; 'framework'
-   standards facilitate this kind of risk.
-
-   Furthermore, Internet protocols SHOULD NOT make every aspect of their
-   operation extensible; extension points SHOULD be reasoned,
-   appropriate boundaries for flexibility and control.  When extension
-   points are defined, they SHOULD NOT allow an extension to declare
-   itself to be mandatory-to-interoperate, as that pattern invites
-   abuse.
-
-5.5.  Accomodate Limited Domains Warily
+5.4.  Accomodate Limited Domains Warily
 
    [RFC8799] explores a class of protocols that operate in 'limited
    domains' -- that is, they are not intended to be 'full' Internet
@@ -599,11 +576,42 @@ Table of Contents
    to indirect centralization, because the endpoints may have few
    choices to avoid acquiescing to a network's demands.
 
+5.5.  Protocol Evolution Can Be a Centralization Risk
+
+   An important feature of Internet protocols is their ability to evolve
+   over time, so that they can meet new requirements and adapt to new
+   conditions without requiring a 'flag day' to convert users.
+   Typically, protocol evolution is accommodated through extension
+   mechanisms, where optional features can be added over time in an
+   interoperable fashion.
+
+   Protocol extensions can bring risk of platform centralization if a
+   powerful entity can change the target for meaningful interoperability
+   by adding proprietary extensions to a standard protocol.  This is
+   especially true when the core standard does not itself provide
+   sufficient utility to be appealing on its own.
+
+   This kind of centralization risk can be mitigated in a few ways.
+   First and foremost, Internet protocols SHOULD provide concrete
+   utility to the majority of their users as published; 'framework'
+   standards facilitate this kind of risk.
+
+   Furthermore, Internet protocols SHOULD NOT make every aspect of their
+   operation extensible; extension points SHOULD be reasoned,
+   appropriate boundaries for flexibility and control.  When extension
+   points are defined, they SHOULD NOT allow an extension to declare
+   itself to be mandatory-to-interoperate, as that pattern invites
+   abuse.
+
 5.6.  Build Higher Level Protocols
 
-   Platform centralization can be mitigated by XXX
+   Platform centralization also happens when standards do not attempt to
+   define higher-level functions that proprietary platforms provide.
 
 5.7.  Acknowledge the Limits of Protocol Design
+
+   Centralization cannot be prevented through protocol design and
+   standardization efforts alone.
 
    XXX Indirect Platform
 
@@ -638,6 +646,13 @@ Table of Contents
               httpbis-semantics-19, 12 September 2021,
               <https://datatracker.ietf.org/doc/html/draft-ietf-httpbis-
               semantics-19>.
+
+   [I-D.thomson-tmi]
+              Thomson, M., "Principles for the Involvement of
+              Intermediaries in Internet Protocols", Work in Progress,
+              Internet-Draft, draft-thomson-tmi-02, 6 July 2021,
+              <https://datatracker.ietf.org/doc/html/draft-thomson-tmi-
+              02>.
 
    [INTERMEDIARY-INFLUENCE]
               Judge, K., "Intermediary Influence", 2014,

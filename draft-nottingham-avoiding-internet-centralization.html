@@ -1044,7 +1044,7 @@ svg [stroke="fill"], svg [fill^="#fff"] {
 </tr></thead>
 <tfoot><tr>
 <td class="left">Nottingham</td>
-<td class="center">Expires 27 May 2022</td>
+<td class="center">Expires 28 May 2022</td>
 <td class="right">[Page]</td>
 </tr></tfoot>
 </table>
@@ -1057,12 +1057,12 @@ svg [stroke="fill"], svg [fill^="#fff"] {
 <dd class="internet-draft">draft-nottingham-avoiding-internet-centralization-latest</dd>
 <dt class="label-published">Published:</dt>
 <dd class="published">
-<time datetime="2021-11-23" class="published">23 November 2021</time>
+<time datetime="2021-11-24" class="published">24 November 2021</time>
     </dd>
 <dt class="label-intended-status">Intended Status:</dt>
 <dd class="intended-status">Informational</dd>
 <dt class="label-expires">Expires:</dt>
-<dd class="expires"><time datetime="2022-05-27">27 May 2022</time></dd>
+<dd class="expires"><time datetime="2022-05-28">28 May 2022</time></dd>
 <dt class="label-authors">Author:</dt>
 <dd class="authors">
 <div class="author">
@@ -1103,7 +1103,7 @@ svg [stroke="fill"], svg [fill^="#fff"] {
         time. It is inappropriate to use Internet-Drafts as reference
         material or to cite them other than as "work in progress."<a href="#section-boilerplate.1-3" class="pilcrow">¶</a></p>
 <p id="section-boilerplate.1-4">
-        This Internet-Draft will expire on 27 May 2022.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
+        This Internet-Draft will expire on 28 May 2022.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="copyright">
@@ -1190,10 +1190,10 @@ svg [stroke="fill"], svg [fill^="#fff"] {
                 <p id="section-toc.1-1.5.2.3.1"><a href="#section-5.3" class="xref">5.3</a>.  <a href="#name-reuse-existing-tools" class="xref">Reuse Existing Tools</a></p>
 </li>
               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5.2.4">
-                <p id="section-toc.1-1.5.2.4.1"><a href="#section-5.4" class="xref">5.4</a>.  <a href="#name-protocol-evolution-can-be-a" class="xref">Protocol Evolution Can Be a Centralization Risk</a></p>
+                <p id="section-toc.1-1.5.2.4.1"><a href="#section-5.4" class="xref">5.4</a>.  <a href="#name-accomodate-limited-domains-" class="xref">Accomodate Limited Domains Warily</a></p>
 </li>
               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5.2.5">
-                <p id="section-toc.1-1.5.2.5.1"><a href="#section-5.5" class="xref">5.5</a>.  <a href="#name-accomodate-limited-domains-" class="xref">Accomodate Limited Domains Warily</a></p>
+                <p id="section-toc.1-1.5.2.5.1"><a href="#section-5.5" class="xref">5.5</a>.  <a href="#name-protocol-evolution-can-be-a" class="xref">Protocol Evolution Can Be a Centralization Risk</a></p>
 </li>
               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5.2.6">
                 <p id="section-toc.1-1.5.2.6.1"><a href="#section-5.6" class="xref">5.6</a>.  <a href="#name-build-higher-level-protocol" class="xref">Build Higher Level Protocols</a></p>
@@ -1414,10 +1414,11 @@ shown here.<a href="#section-1.1-1" class="pilcrow">¶</a></p>
         <h3 id="name-allow-intermediation-sparin">
 <a href="#section-5.1" class="section-number selfRef">5.1. </a><a href="#name-allow-intermediation-sparin" class="section-name selfRef">Allow Intermediation Sparingly</a>
         </h3>
-<p id="section-5.1-1">The introduction of an intermediary role -- i.e., a party that is required for communication to take place between endpoints -- adds centralization risk to Internet protocols, because it brings opportunities for control and observiation.<a href="#section-5.1-1" class="pilcrow">¶</a></p>
+<p id="section-5.1-1">The introduction of an intermediary role -- i.e., one that performs a function but is not a first party to that communication -- adds centralization risk to Internet protocols, because it brings opportunities for control and observation. Even when the protocol is federated (see <a href="#federation" class="xref">Section 4.1</a>) to avoid direct centralization, significant indirect centralization risks exist.<a href="#section-5.1-1" class="pilcrow">¶</a></p>
 <p id="section-5.1-2">However, intermediation can sometimes add significant value to a protocol, or enable what is considered a necessary function. In such cases, the centralized function SHOULD be as minimal as possible, and expose only the information and pontential for control necessary for that function to be performed. Protocol designers SHOULD consider the likely deployment patterns for those intermediaries and how network effects and other factors will influence them.<a href="#section-5.1-2" class="pilcrow">¶</a></p>
 <p id="section-5.1-3">Note that intermediation can also be used to control access to information or impose functional boundaries, so as to reduce the need to trust potentially malicious endpoints. For example, there are a number of so-called 'oblivious' protocols currently in development that allow end users to hide details that might identify them from services, while still accessing those services.<a href="#section-5.1-3" class="pilcrow">¶</a></p>
 <p id="section-5.1-4">The same guidance applies in these cases; the observation and control potential SHOULD be as minimal as possible, while still meeting the design goals of the protocol.<a href="#section-5.1-4" class="pilcrow">¶</a></p>
+<p id="section-5.1-5">See <span>[<a href="#I-D.thomson-tmi" class="xref">I-D.thomson-tmi</a>]</span> for more guidance.<a href="#section-5.1-5" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="encrypt">
@@ -1426,7 +1427,8 @@ shown here.<a href="#section-1.1-1" class="pilcrow">¶</a></p>
 <a href="#section-5.2" class="section-number selfRef">5.2. </a><a href="#name-encrypt-always" class="section-name selfRef">Encrypt, Always</a>
         </h3>
 <p id="section-5.2-1">When deployed at scale, encryption can be an effective technique to reduce the risks of inherited centralization. By reducing the number of parties who have access to content of communication, the ability of lower-layer protocols and intermediaries at those layers to interfere with or observe is reduced.<a href="#section-5.2-1" class="pilcrow">¶</a></p>
-<p id="section-5.2-2">Note that the benefits are most pronounced when the majority (if not all) traffic is encrypted. As a result, protocols SHOULD be encrypted by default. See also <span>[<a href="#RFC7258" class="xref">RFC7258</a>]</span>.<a href="#section-5.2-2" class="pilcrow">¶</a></p>
+<p id="section-5.2-2">Note that the benefits are most pronounced when the majority (if not all) traffic is encrypted. As a result, protocols SHOULD be encrypted by default.<a href="#section-5.2-2" class="pilcrow">¶</a></p>
+<p id="section-5.2-3">See also <span>[<a href="#RFC7258" class="xref">RFC7258</a>]</span>.<a href="#section-5.2-3" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="reuse">
@@ -1436,29 +1438,28 @@ shown here.<a href="#section-1.1-1" class="pilcrow">¶</a></p>
         </h3>
 <p id="section-5.3-1">When a protocol function has necessary centralization risk and there exists an already-deployed solution with appropriate mitigations, that solution should be reused in favour of inventing a new one.<a href="#section-5.3-1" class="pilcrow">¶</a></p>
 <p id="section-5.3-2">For example, if a protocol requires a coordinated, global naming function, reusing the Domain Name System is preferable to establishing a new system, because its centralization risk is known and understood (see <a href="#multi" class="xref">Section 4.2</a>).<a href="#section-5.3-2" class="pilcrow">¶</a></p>
-<p id="section-5.3-3">XXX<a href="#section-5.3-3" class="pilcrow">¶</a></p>
-</section>
-</div>
-<div id="evolution">
-<section id="section-5.4">
-        <h3 id="name-protocol-evolution-can-be-a">
-<a href="#section-5.4" class="section-number selfRef">5.4. </a><a href="#name-protocol-evolution-can-be-a" class="section-name selfRef">Protocol Evolution Can Be a Centralization Risk</a>
-        </h3>
-<p id="section-5.4-1">An important feature of Internet protocols is their ability to evolve over time, so that they can meet new requirements and adapt to new conditions without requiring a 'flag day' to convert users. Typically, protocol evolution is accommodated through extension mechanisms, where optional features can be added over time in an interoperable fashion.<a href="#section-5.4-1" class="pilcrow">¶</a></p>
-<p id="section-5.4-2">Protocol extensions can become a centralization risk if a powerful entry can change the target for meaningful interoperability by adding proprietary extensions to a standard protocol. This is especially true when the core standard does not itself provide sufficient utility to be appealing on its own.<a href="#section-5.4-2" class="pilcrow">¶</a></p>
-<p id="section-5.4-3">This kind of centralization risk can be mitigated in a few ways. First and foremost, Internet protocols SHOULD provide concrete utility to the majority of their users as published; 'framework' standards facilitate this kind of risk.<a href="#section-5.4-3" class="pilcrow">¶</a></p>
-<p id="section-5.4-4">Furthermore, Internet protocols SHOULD NOT make every aspect of their operation extensible; extension points SHOULD be reasoned, appropriate boundaries for flexibility and control. When extension points are defined, they SHOULD NOT allow an extension to declare itself to be mandatory-to-interoperate, as that pattern invites abuse.<a href="#section-5.4-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="accomodate-limited-domains-warily">
-<section id="section-5.5">
+<section id="section-5.4">
         <h3 id="name-accomodate-limited-domains-">
-<a href="#section-5.5" class="section-number selfRef">5.5. </a><a href="#name-accomodate-limited-domains-" class="section-name selfRef">Accomodate Limited Domains Warily</a>
+<a href="#section-5.4" class="section-number selfRef">5.4. </a><a href="#name-accomodate-limited-domains-" class="section-name selfRef">Accomodate Limited Domains Warily</a>
         </h3>
-<p id="section-5.5-1"><span>[<a href="#RFC8799" class="xref">RFC8799</a>]</span> explores a class of protocols that operate in 'limited domains' -- that is, they are not intended to be 'full' Internet protocols with broad applicability, but instead operation within a particular network or other constrained environment.<a href="#section-5.5-1" class="pilcrow">¶</a></p>
-<p id="section-5.5-2">Often, limited-domain protocols address network requirements -- for example, imposing security policy, integrating services or application functions into the network, or differentiating different classes of network services.<a href="#section-5.5-2" class="pilcrow">¶</a></p>
-<p id="section-5.5-3">Such network-centric requirements can introduce the risk of inherited centralization when they allow the network to interpose itself and its requirements between the endpoints of a given communication.<a href="#section-5.5-3" class="pilcrow">¶</a></p>
-<p id="section-5.5-4">These risks can be partially mitigated by requiring such functions to be opted into by one or both endpoints (once both the network and the endpoint are authenticated to each other), so that the network is acting on their behalf. However, this approach is still vulnerable to indirect centralization, because the endpoints may have few choices to avoid acquiescing to a network's demands.<a href="#section-5.5-4" class="pilcrow">¶</a></p>
+<p id="section-5.4-1"><span>[<a href="#RFC8799" class="xref">RFC8799</a>]</span> explores a class of protocols that operate in 'limited domains' -- that is, they are not intended to be 'full' Internet protocols with broad applicability, but instead operation within a particular network or other constrained environment.<a href="#section-5.4-1" class="pilcrow">¶</a></p>
+<p id="section-5.4-2">Often, limited-domain protocols address network requirements -- for example, imposing security policy, integrating services or application functions into the network, or differentiating different classes of network services.<a href="#section-5.4-2" class="pilcrow">¶</a></p>
+<p id="section-5.4-3">Such network-centric requirements can introduce the risk of inherited centralization when they allow the network to interpose itself and its requirements between the endpoints of a given communication.<a href="#section-5.4-3" class="pilcrow">¶</a></p>
+<p id="section-5.4-4">These risks can be partially mitigated by requiring such functions to be opted into by one or both endpoints (once both the network and the endpoint are authenticated to each other), so that the network is acting on their behalf. However, this approach is still vulnerable to indirect centralization, because the endpoints may have few choices to avoid acquiescing to a network's demands.<a href="#section-5.4-4" class="pilcrow">¶</a></p>
+</section>
+</div>
+<div id="evolution">
+<section id="section-5.5">
+        <h3 id="name-protocol-evolution-can-be-a">
+<a href="#section-5.5" class="section-number selfRef">5.5. </a><a href="#name-protocol-evolution-can-be-a" class="section-name selfRef">Protocol Evolution Can Be a Centralization Risk</a>
+        </h3>
+<p id="section-5.5-1">An important feature of Internet protocols is their ability to evolve over time, so that they can meet new requirements and adapt to new conditions without requiring a 'flag day' to convert users. Typically, protocol evolution is accommodated through extension mechanisms, where optional features can be added over time in an interoperable fashion.<a href="#section-5.5-1" class="pilcrow">¶</a></p>
+<p id="section-5.5-2">Protocol extensions can bring risk of platform centralization if a powerful entity can change the target for meaningful interoperability by adding proprietary extensions to a standard protocol. This is especially true when the core standard does not itself provide sufficient utility to be appealing on its own.<a href="#section-5.5-2" class="pilcrow">¶</a></p>
+<p id="section-5.5-3">This kind of centralization risk can be mitigated in a few ways. First and foremost, Internet protocols SHOULD provide concrete utility to the majority of their users as published; 'framework' standards facilitate this kind of risk.<a href="#section-5.5-3" class="pilcrow">¶</a></p>
+<p id="section-5.5-4">Furthermore, Internet protocols SHOULD NOT make every aspect of their operation extensible; extension points SHOULD be reasoned, appropriate boundaries for flexibility and control. When extension points are defined, they SHOULD NOT allow an extension to declare itself to be mandatory-to-interoperate, as that pattern invites abuse.<a href="#section-5.5-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="build-higher-level-protocols">
@@ -1466,7 +1467,7 @@ shown here.<a href="#section-1.1-1" class="pilcrow">¶</a></p>
         <h3 id="name-build-higher-level-protocol">
 <a href="#section-5.6" class="section-number selfRef">5.6. </a><a href="#name-build-higher-level-protocol" class="section-name selfRef">Build Higher Level Protocols</a>
         </h3>
-<p id="section-5.6-1">Platform centralization can be mitigated by XXX<a href="#section-5.6-1" class="pilcrow">¶</a></p>
+<p id="section-5.6-1">Platform centralization also happens when standards do not attempt to define higher-level functions that proprietary platforms provide.<a href="#section-5.6-1" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="acknowledge-the-limits-of-protocol-design">
@@ -1474,9 +1475,10 @@ shown here.<a href="#section-1.1-1" class="pilcrow">¶</a></p>
         <h3 id="name-acknowledge-the-limits-of-p">
 <a href="#section-5.7" class="section-number selfRef">5.7. </a><a href="#name-acknowledge-the-limits-of-p" class="section-name selfRef">Acknowledge the Limits of Protocol Design</a>
         </h3>
-<p id="section-5.7-1">XXX
+<p id="section-5.7-1">Centralization cannot be prevented through protocol design and standardization efforts alone.<a href="#section-5.7-1" class="pilcrow">¶</a></p>
+<p id="section-5.7-2">XXX
 Indirect
-Platform<a href="#section-5.7-1" class="pilcrow">¶</a></p>
+Platform<a href="#section-5.7-2" class="pilcrow">¶</a></p>
 </section>
 </div>
 </section>
@@ -1522,6 +1524,10 @@ Platform<a href="#section-5.7-1" class="pilcrow">¶</a></p>
 <dt id="HTTP">[HTTP]</dt>
         <dd>
 <span class="refAuthor">Fielding, R. T.</span>, <span class="refAuthor">Nottingham, M.</span>, and <span class="refAuthor">J. Reschke</span>, <span class="refTitle">"HTTP Semantics"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-httpbis-semantics-19</span>, <time datetime="2021-09-12" class="refDate">12 September 2021</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-httpbis-semantics-19">https://datatracker.ietf.org/doc/html/draft-ietf-httpbis-semantics-19</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="I-D.thomson-tmi">[I-D.thomson-tmi]</dt>
+        <dd>
+<span class="refAuthor">Thomson, M.</span>, <span class="refTitle">"Principles for the Involvement of Intermediaries in Internet Protocols"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-thomson-tmi-02</span>, <time datetime="2021-07-06" class="refDate">6 July 2021</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-thomson-tmi-02">https://datatracker.ietf.org/doc/html/draft-thomson-tmi-02</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="INTERMEDIARY-INFLUENCE">[INTERMEDIARY-INFLUENCE]</dt>
         <dd>
