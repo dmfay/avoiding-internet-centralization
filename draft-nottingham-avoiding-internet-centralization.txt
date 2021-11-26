@@ -3,9 +3,9 @@
 
 
 Network Working Group                                      M. Nottingham
-Internet-Draft                                          24 November 2021
+Internet-Draft                                          26 November 2021
 Intended status: Informational                                          
-Expires: 28 May 2022
+Expires: 30 May 2022
 
 
                     Avoiding Internet Centralization
@@ -14,8 +14,8 @@ Expires: 28 May 2022
 Abstract
 
    Avoiding centralization is an important goal for Internet protocols.
-   This document defines the term, discusses why it is necessary for
-   Internet protocol designers to consider centralization risks,
+   This document offers a definition of centralization, discusses why it
+   is necessary for Internet protocol designers to consider its risks,
    identifies different kinds of centralization, catalogues some
    limitations of current approaches to controlling it, and recommends
    best practices for protocol designers.
@@ -42,7 +42,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 28 May 2022.
+   This Internet-Draft will expire on 30 May 2022.
 
 Copyright Notice
 
@@ -96,14 +96,13 @@ Table of Contents
    from having wide impact, it has also enabled the rapid adoption and
    broad spread of the Internet, because internetworking does not
    require obtaining permission from or ceding control to another entity
-   -- thereby accommodating a spectrum of political and social
-   requirements.
+   -- thereby accommodating a spectrum of requirements and positioning
+   the Internet as a public good.
 
-   This means that protocols that are considered part of the Internet
-   share a common design goal: avoiding centralization, which we define
-   as the ability of a single person, company, or government -- or a
-   small group of them -- to observe, control, or extract rent from the
-   protocol's operation or use.
+   As a result, Internet protocols share a common design goal: avoiding
+   centralization, which we define as the ability of a single person,
+   company, or government -- or a small group of them -- to observe,
+   control, or extract rent from the protocol's operation or use.
 
    At the same time, the utility of many Internet protocols is enabled
    or significantly enhanced by ceding some aspect of communication
@@ -157,16 +156,23 @@ Table of Contents
 
    As a 'large, heterogeneous collection of interconnected systems'
    [BCP95] the Internet is often characterised as a 'network of
-   networks'.  As such, networks relate as peers who agree to facilitate
-   communication, rather than having a relationship of subservience to
-   others' requirements or coercion by them.
+   networks'.  As such, these networks relate as peers who agree to
+   facilitate communication, rather than having a relationship of
+   subservience to others' requirements or coercion by them.
 
    Many Internet protocols allow a third party to be interposed into
-   communication between two other parties -- by necessity, by
-   happenstance, or at the option of one or both of the participants.
-   This is often characterised as _intermediation_, and is often used to
-   help provide a protocol's functions, and may be necessary for some of
-   them.  However, the 'informational and positional advantages'
+   communication between two other parties.  In some cases, this is not
+   intended by the protocol's designers; for example, intervening
+   networks have taken advantage of unencrypted deployment of HTTP
+   [HTTP] to interpose 'interception proxies' (also known as
+   'transparent proxies') to cache, filter, track, or change traffic.
+   In cases where it is a designed feature of the protocol, it is often
+   characterised as _intermediation_, and is typically used to help
+   provide the protocol's functions -- sometimes including those that
+   are necessary for it to operate.
+
+   Whether or not interposition of a third party into communication is
+   intentional, the 'informational and positional advantages'
    [INTERMEDIARY-INFLUENCE] gained can be used to observe behavior (the
    'panopticon effect') and shape or even deny behaviour (the
    'chokepoint effect') -- which can be used those parties (or the
@@ -175,13 +181,14 @@ Table of Contents
 
    As Internet protocols' first duty is to the end user [RFC8890],
    allowing such power to be concentrated into few hands is counter to
-   the goals of the Internet.
+   the IETF's mission of creating an Internet that 'will help us to
+   build a better human society.'  [BCP95]
 
    Additionally, concentration of power has deleterious effects on the
    Internet itself, including:
 
-   *  _Innovation_: Centralized protocols can preclude the possibility
-      of 'permissionless innovation' -- the ability to deploy new,
+   *  _Innovation_: Centralization can preclude the possibility of
+      'permissionless innovation' -- the ability to deploy new,
       unforeseen applications without requiring coordination with
       parties other than those you are communicating with.
 
@@ -197,13 +204,13 @@ Table of Contents
       applications and services built upon it) improves when there are
       many ways to obtain access to it.  While centralized services
       typically benefit from the focused attention that their elevated
-      role requires, when they do fail, the resulting loss of
+      role requires, when they do fail the resulting loss of
       availability can have disproportionate impact.
 
-   To summarize, Internet protocols avoid centralization because
-   allowing it would allow the Internet (or some part of it) to be
-   captured, effectively turning it into a 'walled garden' that fails to
-   meet its architectural design goals and users' expectations.
+   To summarize, we avoid centralization because it would allow the
+   Internet (or some part of it) to be captured, effectively turning it
+   into a 'walled garden' that fails to meet both architectural design
+   goals and users' expectations.
 
 3.  Kinds of Centralization
 
@@ -611,7 +618,8 @@ Table of Contents
    captured the relevant functions.
 
    However, changes in user requirements and legal regulation can
-   obviate such perceptions.
+   obviate such perceptions.  By creating open, standardised protocols
+   as alternatives to proprietary platforms,
 
 5.7.  Acknowledge the Limits of Protocol Design
 
