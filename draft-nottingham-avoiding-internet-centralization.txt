@@ -226,6 +226,11 @@ Table of Contents
       functions is significantly more robust, when viewed systemically.
       [POLYCENTRIC]
 
+   *  _Self-Reinforcement_: As widely noted (see, eg., [ACCESS]), a
+      centralized service benefits from access to data which can be used
+      to further improve its offerings, while denying such access to
+      others.
+
    To summarize, we avoid centralization because it would allow the
    Internet (or some part of it) to be captured, effectively turning it
    into a 'walled garden' that fails to meet both architectural design
@@ -568,11 +573,12 @@ Table of Contents
 5.1.  Allow Intermediation Sparingly
 
    The introduction of an intermediary role -- i.e., one that performs a
-   function but is not a first party to that communication -- adds
+   function but is not a first party to communication -- adds
    centralization risk to Internet protocols, because it brings
    opportunities for control and observation.  Even when the protocol is
    federated (see Section 4.1) to avoid direct centralization,
-   significant indirect centralization risks exist.
+   significant indirect centralization risks exist when intermediation
+   is allowed.
 
    However, intermediation can sometimes add significant value to a
    protocol, or enable what is considered a necessary function.  In such
@@ -582,15 +588,20 @@ Table of Contents
    the likely deployment patterns for those intermediaries and how
    network effects and other factors will influence them.
 
-   Note that intermediation can have a positive effect, when it is used
-   to control access to information or impose functional boundaries, so
-   as to reduce the need for users to trust potentially malicious
-   endpoints.  For example, there are a number of so-called 'oblivious'
-   protocols currently in development that allow end users to hide
-   details that might identify them from services, while still accessing
-   those services.
+   Such predictions can be difficult.  For example, an intermediary
+   interposed by the end user of a protocol might allow them to delegate
+   functions to a party they trust, thereby empowering them.  However,
+   if an intervening network is able to force users to delegate to a
+   particular intermediary, inherited centralization could result.
 
-   The same guidance applies in these cases; the observation and control
+   When carefully considered, intermediation can be a powerful way to
+   enforce functional boundaries -- for example, to reduce the need for
+   users to trust potentially malicious endpoints, as seen in the so-
+   called 'oblivious' protocols currently in development (e.g.,
+   [I-D.pauly-dprive-oblivious-doh]) that allow end users to hide their
+   identity from services, while still accessing them.
+
+   The same advice applies in these cases; the observation and control
    potential SHOULD be as minimal as possible, while still meeting the
    design goals of the protocol.
 
@@ -599,7 +610,7 @@ Table of Contents
 5.2.  Encrypt, Always
 
    When deployed at scale, encryption can be an effective technique to
-   reduce some inherited centralization risks.  By reducing the number
+   reduce many inherited centralization risks.  By reducing the number
    of parties who have access to content of communication, the ability
    of lower-layer protocols and intermediaries at those layers to
    interfere with or observe is precluded.  Even when they can still
@@ -714,6 +725,13 @@ Table of Contents
 
 7.2.  Informative References
 
+   [ACCESS]   Vestager, M., "Defending Competition in a Digitised World,
+              Address at the European Consumer and Competition Day",
+              April 2019, <https://wayback.archive-
+              it.org/12090/20191129202059/https://ec.europa.eu/
+              commission/commissioners/2014-2019/vestager/announcements/
+              defending-competition-digitised-world_en>.
+
    [BCP95]    Alvestrand, H., "A Mission Statement for the IETF",
               BCP 95, RFC 3935, October 2004.
 
@@ -724,6 +742,13 @@ Table of Contents
               httpbis-semantics-19, 12 September 2021,
               <https://datatracker.ietf.org/doc/html/draft-ietf-httpbis-
               semantics-19>.
+
+   [I-D.pauly-dprive-oblivious-doh]
+              Kinnear, E., McManus, P., Pauly, T., Verma, T., and C. A.
+              Wood, "Oblivious DNS Over HTTPS", Work in Progress,
+              Internet-Draft, draft-pauly-dprive-oblivious-doh-08, 3
+              December 2021, <https://datatracker.ietf.org/doc/html/
+              draft-pauly-dprive-oblivious-doh-08>.
 
    [I-D.thomson-tmi]
               Thomson, M., "Principles for the Involvement of
