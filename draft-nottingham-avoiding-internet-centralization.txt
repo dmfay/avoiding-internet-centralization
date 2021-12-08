@@ -144,7 +144,7 @@ Table of Contents
    Engineers who design and standardize Internet protocols are the
    primary audience for this document.  However, designers of
    proprietary protocols can benefit from considering aspects of
-   centralisation, especially if they intend their protocol to be
+   centralization, especially if they intend their protocol to be
    considered for standardisation.  Likewise, policymakers can use this
    document to help identify and remedy inappropriately centralized
    protocols and applications.
@@ -378,7 +378,7 @@ Table of Contents
    coordination beyond that provided by DNS, as discussed above.
 
    However, applications built on top of HTTP (as well as the rest of
-   the 'Web Platform') often exhibit centralisation.  As such, HTTP is
+   the 'Web Platform') often exhibit centralization.  As such, HTTP is
    an example of a platform for centralization -- while the protocol
    itself is not centralized, it does facilitate the creation of
    centralized services and applications.
